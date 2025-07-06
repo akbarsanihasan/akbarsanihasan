@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   sodipodi:docname="logo.svg"
+   inkscape:export-batch-path="/home/akbarsanihasan/CS/www/src/assets"
+   inkscape:export-batch-name="logo"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="0.83593751"
+     inkscape:cx="130.99065"
+     inkscape:cy="348.71028"
+     inkscape:window-width="1910"
+     inkscape:window-height="1012"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1"
+     showguides="false"
+     showborder="false" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g2"
+       transform="matrix(1.2078837,0,0,1.2078835,-49.938201,-49.867929)">
+      <circle
+         style="fill:#e8e9ea;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:10.4961;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+         id="path1"
+         cx="253.28448"
+         cy="253.22635"
+         r="206.69292" />
+      <path
+         d="m 173.28363,316.6384 c -3.47829,9.89977 -5.88635,14.18075 -12.30781,14.18075 H 149.2031 v 16.05368 h 65.28498 v -16.05368 h -13.1105 c -6.68905,0 -9.89978,-2.94317 -6.15392,-13.64562 l 9.63223,-29.16421 h 65.28496 v -0.26755 l 9.89978,29.16416 c 2.94318,9.09713 -0.26757,13.91322 -6.9566,13.91322 h -13.11051 v 16.05368 h 97.39236 v -16.05368 h -11.77272 c -6.95659,0 -9.36465,-4.81609 -12.57537,-14.98344 L 277.90014,159.57987 h -49.2313 z m 36.65592,-44.14763 27.82638,-83.2116 27.55882,83.2116 z"
+         id="text1"
+         style="font-weight:bold;font-size:261.173px;font-family:Zodiak;-inkscape-font-specification:'Zodiak, Bold';fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round"
+         aria-label="A" />
+    </g>
+  </g>
+</svg>
