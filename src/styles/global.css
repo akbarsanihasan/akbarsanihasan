@@ -1,0 +1,73 @@
+@import 'sanitize.css';
+@import 'sanitize.css/forms.css';
+@import 'sanitize.css/typography.css';
+
+:root {
+    --bg: #e1e1e1;
+    --fg: #171515;
+    --header-height: 24vh;
+}
+
+@font-face {
+    font-family: 'MainSans';
+    src:
+        url('../fonts/Archivo-Variable.woff2') format('woff2'),
+        url('../fonts/Archivo-Variable.woff') format('woff');
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MainSansItalic';
+    src:
+        url('../fonts/Archivo-VariableItalic.woff2') format('woff2'),
+        url('../fonts/Archivo-VariableItalic.woff') format('woff');
+    font-display: swap;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'MainSerif';
+    src:
+        url('/fonts/Zodiak-Variable.woff2') format('woff2'),
+        url('/fonts/Zodiak-Variable.woff') format('woff');
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MainSerifItalic';
+    src:
+        url('../fonts/Zodiak-VariableItalic.woff2') format('woff2'),
+        url('../fonts/Zodiak-VariableItalic.woff') format('woff');
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: italic;
+}
+
+body {
+    background: var(--bg);
+    color: var(--fg);
+}
+
+* {
+    font-family: MainSans;
+    font-size: clamp(14px, 1.5vw, 18px);
+}
+
+.text-s {
+    font-size: clamp(12px, 1.3vw, 16px);
+}
+
+.text-md {
+    font-size: clamp(16px, 1.7vw, 20px);
+}
+
+.text-lg {
+    font-size: clamp(18px, 1.9vw, 22px);
+}
+
+.text-xl {
+    font-size: clamp(20px, 2.1vw, 24px);
+}

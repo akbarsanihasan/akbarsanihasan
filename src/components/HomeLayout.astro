@@ -1,0 +1,36 @@
+---
+import Header from "./Header.astro";
+---
+
+<style>
+    .home {
+        width: 80vw;
+        min-height: 100vh;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: start;
+            flex-direction: column;
+            justify-content: start;
+            margin-top: 5vh;
+        }
+    }
+    @media screen and (min-width: 768px) {
+        .home {
+            main {
+                justify-content: center;
+                margin-top: 0;
+            }
+        }
+    }
+</style>
+<div class="home">
+    <Header />
+    <main>
+        <slot />
+    </main>
+</div>

@@ -1,0 +1,94 @@
+---
+const socials: { platform: string; url: string }[] = [
+    {
+        platform: "Github,",
+        url: "https://github.com/akbarsanihasan",
+    },
+    {
+        platform: "Instagram.",
+        url: "https://instagram.com/akbarsanihasan",
+    },
+];
+---
+
+<style>
+    header {
+        height: var(--header-height);
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        .socials {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            order: 1;
+            li {
+                list-style: none;
+                a {
+                    text-decoration: none;
+                    color: var(--fg);
+                }
+                &:not(:last-child) {
+                    margin-right: 0.5rem;
+                }
+            }
+        }
+        .brand {
+            a {
+                font-family: "MainSerif";
+                color: var(--fg);
+                text-decoration: none;
+                font-weight: 600;
+                font-style: italic;
+            }
+        }
+        nav {
+            order: 2;
+            ul {
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: space-between;
+                li {
+                    &:not(:last-child) {
+                        margin-right: 0.5rem;
+                    }
+                    a {
+                        color: var(--fg);
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        header {
+            --header-height: 10vh;
+            flex-direction: row;
+            align-items: end;
+            justify-content: space-between;
+        }
+    }
+</style>
+<header>
+    <ul class="socials">
+        {
+            socials.map((social) => (
+                <li>
+                    <a href={social.url} target="_blank">
+                        {social.platform}
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+    <span class="brand"><a href="/" class="text-xl">Akbar Sani H.</a></span>
+    <nav>
+        <ul>
+            <li><a href="/works">Works,</a></li>
+            <li><a href="/Blogs">Blogs,</a></li>
+            <li><a href="/Blogs">About.</a></li>
+        </ul>
+    </nav>
+</header>

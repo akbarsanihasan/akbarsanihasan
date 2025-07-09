@@ -1,5 +1,6 @@
 ---
-import Header from '../components/header.astro'
+import HomeLayout from "../components/HomeLayout.astro";
+import "../styles/global.css";
 ---
 
 <!doctype html>
@@ -9,7 +10,80 @@ import Header from '../components/header.astro'
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Akbar Sani Hasan.</title>
     </head>
+
+    <style>
+        .content {
+            margin: 4rem 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            flex-wrap: wrap;
+            .headlines {
+                margin-bottom: 2rem;
+                margin-right: 2rem;
+                .headline {
+                    margin: 0;
+                    font-family: "MainSerif";
+                    font-weight: 500;
+                    font-size: clamp(26px, 4vw, 72px);
+                }
+                .subheadline {
+                    font-size: clamp(18px, 2vw, 42px);
+                }
+            }
+            .projects {
+                span {
+                    text-decoration: underline;
+                    font-weight: 600;
+                    margin-bottom: 1rem;
+                }
+                ul {
+                    margin: 0;
+                    padding: 0;
+                    li {
+                        margin-top: 0.8rem;
+                        list-style: none;
+                        a {
+                            text-decoration: none;
+                            color: var(--fg);
+                        }
+                    }
+                }
+            }
+        }
+        .contact {
+            a {
+                margin-right: 0.5rem;
+                text-decoration: none;
+                color: var(--fg);
+            }
+        }
+    </style>
     <body>
-        <Header />
+        <HomeLayout>
+            <span class="location text-s">Klaten, Central Java, Indonesia</span>
+
+            <div class="content">
+                <div class="headlines">
+                    <h1 class="headline">Software Engineer.</h1>
+                    <span class="subheadline">
+                        Glamorizing performance, simplicity and freedom.
+                    </span>
+                </div>
+                <div class="projects">
+                    <span class="text-lg">Featured projects</span>
+                    <ul>
+                        <li><a href="">Politikuang (Web apps)</a></li>
+                        <li><a href="">Punokawan (Game engine)</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="contact">
+                <a class="text-lg" href="">Resume,</a>
+                <a class="text-lg" href="">akbarsanihasan@gmail.com.</a>
+            </div>
+        </HomeLayout>
     </body>
 </html>
