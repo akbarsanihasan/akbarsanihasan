@@ -72,6 +72,10 @@ body {
     font-size: clamp(20px, 2.1vw, 24px);
 }
 
+a {
+    cursor: pointer;
+}
+
 a.effect-underline {
     position: relative;
     display: inline-block;
