@@ -58,16 +58,16 @@ const projects = [
                         }
                     }
                     .projects {
-                        span {
+                        .title {
                             display: inline-block;
                             font-weight: 600;
-                            margin-bottom: 1rem;
+                            margin-bottom: 0.8rem;
                         }
                         ul {
                             margin: 0;
                             padding: 0;
                             li {
-                                margin-bottom: 0.6rem;
+                                margin-bottom: 0.5rem;
                                 list-style: none;
                                 a {
                                     text-decoration: none;
@@ -78,6 +78,23 @@ const projects = [
                         a {
                             text-decoration: none;
                             color: var(--fg);
+                        }
+                    }
+                    .career {
+                        margin-top: 2rem;
+                        display: flex;
+                        flex-direction: column;
+                        .title {
+                            font-weight: 600;
+                        }
+                        .timeline {
+                            margin-top: 0.2rem;
+                            font-style: italic;
+                        }
+                        p {
+                            margin: 0;
+                            padding: 0;
+                            margin-top: 0.3rem;
                         }
                     }
                 }
@@ -122,7 +139,7 @@ const projects = [
                         </p>
                     </div>
                     <div class="projects">
-                        <span class="text-lg">Featured projects</span>
+                        <span class="title text-lg">Featured projects</span>
                         <ul>
                             {
                                 projects.map((project) => (
@@ -141,6 +158,17 @@ const projects = [
                         <a href="" target="_blank" class="effect-underline">
                             More
                         </a>
+                    </div>
+                    <div class="career">
+                        <span class="title text-lg">Recent career</span>
+                        <span class="timeline"
+                            >CV.Karya Hidup Sentosa ~ Internship</span
+                        >
+                        <span class="timeline">March 2020 - March 2022</span>
+                        <p class="text-md">
+                            Maintaining and developing Enterprise Resource
+                            Planning (ERP) using PHP fullstack technology
+                        </p>
                     </div>
                 </div>
 
