@@ -74,16 +74,20 @@ const socials: { platform: string; url: string }[] = [
     <span class="brand"><a href="/" class="text-xl">Akbar Sani H.</a></span>
     <nav>
         <ul>
-            <li><a class="effect-shade" href="/works">Works,</a></li>
-            <li><a class="effect-shade" href="/Blogs">Blogs,</a></li>
-            <li><a class="effect-shade" href="/Blogs">About.</a></li>
+            <li><a class="effect-shine" href="/works">Works,</a></li>
+            <li><a class="effect-shine" href="/Blogs">Blogs,</a></li>
+            <li><a class="effect-shine" href="/Blogs">About.</a></li>
         </ul>
     </nav>
     <ul class="socials">
         {
             socials.map((social) => (
                 <li>
-                    <a href={social.url} target="_blank">
+                    <a
+                        class="effect-underline"
+                        href={social.url}
+                        target="_blank"
+                    >
                         {social.platform}
                     </a>
                 </li>

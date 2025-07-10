@@ -72,16 +72,6 @@ body {
     font-size: clamp(20px, 2.1vw, 24px);
 }
 
-@keyframes a-effect-trough {
-    from {
-        transform: translateX(-100%);
-    }
-
-    to {
-        transform: translateX(0%);
-    }
-}
-
 a.effect-underline {
     position: relative;
     display: inline-block;
@@ -152,5 +142,35 @@ a.effect-shade {
         transform: scaleX(0%);
         transform-origin: right;
         transition: transform 300ms var(--wuzz);
+    }
+}
+
+a.effect-shine {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+
+    &:hover {
+        &::before {
+            transform: translateX(100%);
+        }
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(90deg,
+                rgba(225, 225, 225, 0),
+                rgba(225, 225, 225, 0.6),
+                rgba(225, 225, 225, 0));
+        transform-origin: left;
+        transform: translateX(-100%);
+        transition: 1s;
     }
 }

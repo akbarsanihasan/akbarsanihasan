@@ -1,6 +1,18 @@
 ---
 import HomeLayout from "../components/HomeLayout.astro";
 import "../styles/global.css";
+const projects = [
+    {
+        name: "Politikuang",
+        url: "https://github.com/akbarsanihasan/politik-uang",
+        category: "Application",
+    },
+    {
+        name: "Punokawan",
+        url: "https://github.com/akbarsanihasan/punokawan",
+        category: "Game Engine",
+    },
+];
 ---
 
 <!doctype html>
@@ -25,10 +37,10 @@ import "../styles/global.css";
                     margin: 0;
                     font-family: "MainSerif";
                     font-weight: 500;
-                    font-size: clamp(26px, 4vw, 72px);
+                    font-size: clamp(26px, 5.5vw, 68px);
                 }
                 .subheadline {
-                    font-size: clamp(18px, 2vw, 42px);
+                    font-size: clamp(18px, 1.8vw, 32px);
                 }
             }
             .projects {
@@ -52,10 +64,10 @@ import "../styles/global.css";
         }
         .contact {
             a {
-                margin-right: 0.8rem;
                 text-decoration: none;
                 color: var(--fg);
                 margin: 0.5rem 0;
+                margin-right: 0.8rem;
             }
         }
     </style>
@@ -74,8 +86,19 @@ import "../styles/global.css";
                 <div class="projects">
                     <span class="text-lg">Featured projects</span>
                     <ul>
-                        <li><a href="">Politikuang (Web apps)</a></li>
-                        <li><a href="">Punokawan (Game engine)</a></li>
+                        {
+                            projects.map((project) => (
+                                <li>
+                                    <a
+                                        href={project.url}
+                                        target="_blank"
+                                        class="effect-shine"
+                                    >
+                                        {project.name} ({project.category})
+                                    </a>
+                                </li>
+                            ))
+                        }
                     </ul>
                 </div>
             </div>
