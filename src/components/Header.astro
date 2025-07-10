@@ -13,15 +13,24 @@ const socials: { platform: string; url: string }[] = [
 
 <style>
     header {
+        --header-height: 20vh;
         height: var(--header-height);
         display: flex;
         justify-content: space-evenly;
         flex-direction: column;
+        .brand {
+            a {
+                font-family: "MainSerif";
+                color: var(--fg);
+                text-decoration: none;
+                font-weight: 600;
+                font-style: italic;
+            }
+        }
         .socials {
             margin: 0;
             padding: 0;
             display: flex;
-            order: 1;
             li {
                 list-style: none;
                 a {
@@ -33,17 +42,7 @@ const socials: { platform: string; url: string }[] = [
                 }
             }
         }
-        .brand {
-            a {
-                font-family: "MainSerif";
-                color: var(--fg);
-                text-decoration: none;
-                font-weight: 600;
-                font-style: italic;
-            }
-        }
         nav {
-            order: 2;
             ul {
                 margin: 0;
                 padding: 0;
@@ -64,14 +63,22 @@ const socials: { platform: string; url: string }[] = [
 
     @media screen and (min-width: 768px) {
         header {
-            --header-height: 10vh;
+            --header-height: 25vh;
             flex-direction: row;
-            align-items: end;
+            align-items: center;
             justify-content: space-between;
         }
     }
 </style>
 <header>
+    <span class="brand"><a href="/" class="text-xl">Akbar Sani H.</a></span>
+    <nav>
+        <ul>
+            <li><a class="effect-shade" href="/works">Works,</a></li>
+            <li><a class="effect-shade" href="/Blogs">Blogs,</a></li>
+            <li><a class="effect-shade" href="/Blogs">About.</a></li>
+        </ul>
+    </nav>
     <ul class="socials">
         {
             socials.map((social) => (
@@ -83,12 +90,4 @@ const socials: { platform: string; url: string }[] = [
             ))
         }
     </ul>
-    <span class="brand"><a href="/" class="text-xl">Akbar Sani H.</a></span>
-    <nav>
-        <ul>
-            <li><a href="/works">Works,</a></li>
-            <li><a href="/Blogs">Blogs,</a></li>
-            <li><a href="/Blogs">About.</a></li>
-        </ul>
-    </nav>
 </header>

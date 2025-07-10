@@ -5,7 +5,7 @@
 :root {
     --bg: #e1e1e1;
     --fg: #171515;
-    --header-height: 24vh;
+    --wuzz: cubic-bezier(0.96, 0.02, 0.21, 0.98);
 }
 
 @font-face {
@@ -70,4 +70,87 @@ body {
 
 .text-xl {
     font-size: clamp(20px, 2.1vw, 24px);
+}
+
+@keyframes a-effect-trough {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0%);
+    }
+}
+
+a.effect-underline {
+    position: relative;
+    display: inline-block;
+
+    &:hover {
+        &::before {
+            transform-origin: left;
+            transform: scaleX(100%);
+        }
+
+        &::after {
+            transform-origin: right;
+            transform: scaleX(0%);
+        }
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 0.11em;
+        width: 100%;
+        background: var(--fg);
+        transform-origin: right;
+        transform: scaleX(0%);
+        transition: transform 500ms var(--wuzz) 50ms;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 0.11em;
+        width: 100%;
+        background: var(--fg);
+        transform-origin: left;
+        transform: scaleX(100%);
+        transition: transform 500ms var(--wuzz);
+    }
+}
+
+a.effect-shade {
+    position: relative;
+    display: inline-block;
+
+    &:hover {
+        &::after {
+            transform-origin: left;
+            transform: scaleX(100%);
+        }
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(90deg,
+                rgba(225, 225, 225, 0),
+                rgba(225, 225, 225, 0.6),
+                rgba(225, 225, 225, 0));
+        transform: scaleX(0%);
+        transform-origin: right;
+        transition: transform 300ms var(--wuzz);
+    }
 }

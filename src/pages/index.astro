@@ -17,11 +17,10 @@ import "../styles/global.css";
             width: 100%;
             display: flex;
             justify-content: space-between;
-            align-items: start;
+            align-items: center;
             flex-wrap: wrap;
             .headlines {
                 margin-bottom: 2rem;
-                margin-right: 2rem;
                 .headline {
                     margin: 0;
                     font-family: "MainSerif";
@@ -34,7 +33,6 @@ import "../styles/global.css";
             }
             .projects {
                 span {
-                    text-decoration: underline;
                     font-weight: 600;
                     margin-bottom: 1rem;
                 }
@@ -54,15 +52,17 @@ import "../styles/global.css";
         }
         .contact {
             a {
-                margin-right: 0.5rem;
+                margin-right: 0.8rem;
                 text-decoration: none;
                 color: var(--fg);
+                margin: 0.5rem 0;
             }
         }
     </style>
     <body>
         <HomeLayout>
-            <span class="location text-s">Klaten, Central Java, Indonesia</span>
+            <span class="location text-s">Klaten, Central Java, Indonesia.</span
+            >
 
             <div class="content">
                 <div class="headlines">
@@ -81,8 +81,14 @@ import "../styles/global.css";
             </div>
 
             <div class="contact">
-                <a class="text-lg" href="">Resume,</a>
-                <a class="text-lg" href="">akbarsanihasan@gmail.com.</a>
+                <a class="text-lg effect-underline" href=""
+                    >akbarsanihasan@gmail.com.</a
+                >
+                <a
+                    class="text-lg effect-underline"
+                    href="Resume.pdf"
+                    target="_blank">Resume,</a
+                >
             </div>
         </HomeLayout>
     </body>
