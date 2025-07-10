@@ -1,5 +1,5 @@
 ---
-import HomeLayout from "../components/HomeLayout.astro";
+import Header from "../components/Header.astro";
 import "../styles/global.css";
 const projects = [
     {
@@ -24,97 +24,137 @@ const projects = [
     </head>
 
     <style>
-        .content {
-            margin: 4rem 0;
-            width: 100%;
+        .home {
+            width: 80vw;
+            min-height: 100vh;
+            margin: auto;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            .headlines {
-                margin-bottom: 2rem;
-                .headline {
-                    margin: 0;
-                    font-family: "MainSerif";
-                    font-weight: 500;
-                    font-size: clamp(26px, 5vw, 64px);
-                }
-                .subheadline {
-                    margin: 0;
-                    padding: 0;
-                    font-size: clamp(18px, 1.8vw, 32px);
-                }
-            }
-            .projects {
-                span {
-                    font-weight: 600;
-                    margin-bottom: 1rem;
-                }
-                ul {
-                    margin: 0;
-                    padding: 0;
-                    li {
-                        margin-top: 0.8rem;
-                        list-style: none;
+            flex-direction: column;
+
+            main {
+                flex: 1;
+                display: flex;
+                align-items: start;
+                flex-direction: column;
+                justify-content: start;
+                margin-top: 5vh;
+                .content {
+                    margin: 5vh 0;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    .headlines {
+                        margin-bottom: 2rem;
+                        .headline {
+                            margin: 0;
+                            font-family: "MainSerif";
+                            font-weight: 500;
+                            font-size: clamp(26px, 5vw, 64px);
+                        }
+                        .subheadline {
+                            margin: 0;
+                            padding: 0;
+                            font-size: clamp(18px, 1.8vw, 32px);
+                        }
+                    }
+                    .projects {
+                        span {
+                            display: inline-block;
+                            font-weight: 600;
+                            margin-bottom: 1rem;
+                        }
+                        ul {
+                            margin: 0;
+                            padding: 0;
+                            li {
+                                margin-bottom: 0.6rem;
+                                list-style: none;
+                                a {
+                                    text-decoration: none;
+                                    color: var(--fg);
+                                }
+                            }
+                        }
                         a {
                             text-decoration: none;
                             color: var(--fg);
                         }
                     }
                 }
+                .contact {
+                    a {
+                        text-decoration: none;
+                        color: var(--fg);
+                        margin: 0.5rem 0;
+                        margin-right: 0.8rem;
+                    }
+                }
             }
         }
-        .contact {
-            a {
-                text-decoration: none;
-                color: var(--fg);
-                margin: 0.5rem 0;
-                margin-right: 0.8rem;
+
+        @media screen and (min-width: 720px) {
+            .home {
+                main {
+                    .content {
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        .headlines {
+                            margin-right: 12vw;
+                        }
+                    }
+                }
             }
         }
     </style>
     <body>
-        <HomeLayout>
-            <span class="location text-s">Klaten, Central Java, Indonesia.</span
-            >
-
-            <div class="content">
-                <div class="headlines">
-                    <h1 class="headline">Software Engineer.</h1>
-                    <p class="subheadline">
-                        Glamorizing performance, simplicity & freedom.
-                    </p>
-                </div>
-                <div class="projects">
-                    <span class="text-lg">Featured projects</span>
-                    <ul>
-                        {
-                            projects.map((project) => (
-                                <li>
-                                    <a
-                                        href={project.url}
-                                        target="_blank"
-                                        class="effect-shine"
-                                    >
-                                        {project.name} ({project.category})
-                                    </a>
-                                </li>
-                            ))
-                        }
-                    </ul>
-                </div>
-            </div>
-
-            <div class="contact">
-                <a class="text-lg effect-underline" href=""
-                    >akbarsanihasan@gmail.com.</a
+        <div class="home">
+            <Header />
+            <main>
+                <span class="location text-s"
+                    >Klaten, Central Java, Indonesia.</span
                 >
-                <a
-                    class="text-lg effect-underline"
-                    href="Resume.pdf"
-                    target="_blank">Resume,</a
-                >
-            </div>
-        </HomeLayout>
+
+                <div class="content">
+                    <div class="headlines">
+                        <h1 class="headline">Software Engineer.</h1>
+                        <p class="subheadline">
+                            Glamorizing performance, simplicity & freedom.
+                        </p>
+                    </div>
+                    <div class="projects">
+                        <span class="text-lg">Featured projects</span>
+                        <ul>
+                            {
+                                projects.map((project) => (
+                                    <li>
+                                        <a
+                                            href={project.url}
+                                            target="_blank"
+                                            class="effect-shine"
+                                        >
+                                            {project.name} ({project.category})
+                                        </a>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                        <a href="" target="_blank" class="effect-underline">
+                            More
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact">
+                    <a class="text-lg effect-underline" href=""
+                        >akbarsanihasan@gmail.com.</a
+                    >
+                    <a
+                        class="text-lg effect-underline"
+                        href="Resume.pdf"
+                        target="_blank">Resume,</a
+                    >
+                </div>
+            </main>
+        </div>
     </body>
 </html>
