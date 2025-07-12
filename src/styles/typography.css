@@ -1,0 +1,126 @@
+@import 'sanitize.css/typography.css';
+
+:root {
+    --font-base-min: 14px;
+    --font-base-max: 18px;
+    --font-base-fluid: 3vw;
+    --font-scale: 1.25;
+}
+
+/**
+* @license
+*
+* Font Family: Archivo
+* Designed by: Omnibus-Type
+* URL: https://www.fontshare.com/fonts/archivo
+* © 2025 Indian Type Foundry
+*/
+@font-face {
+    font-family: 'Archivo-Variable';
+    src:
+        url('../fonts/Archivo-Variable.woff2') format('woff2'),
+        url('../fonts/Archivo-Variable.woff') format('woff');
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Archivo-VariableItalic';
+    src:
+        url('../fonts/Archivo-VariableItalic.woff2') format('woff2'),
+        url('../fonts/Archivo-VariableItalic.woff') format('woff');
+    font-display: swap;
+    font-style: italic;
+}
+
+/**
+* @license
+*
+* Font Family: Zodiak
+* Designed by: Jérémie Hornus, Gaetan Baehr, Jean-Baptiste Morizot, Alisa Nowak, Theo Guillard
+* URL: https://www.fontshare.com/fonts/zodiak
+* © 2025 Indian Type Foundry
+*/
+@font-face {
+    font-family: 'Zodiak-Variable';
+    src:
+        url('../fonts/Zodiak-Variable.woff2') format('woff2'),
+        url('../fonts/Zodiak-Variable.woff') format('woff');
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Zodiak-VariableItalic';
+    src:
+        url('../fonts/Zodiak-VariableItalic.woff2') format('woff2'),
+        url('../fonts/Zodiak-VariableItalic.woff') format('woff');
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: italic;
+}
+
+* {
+    font-size: clamp(var(--font-base-min),
+            var(--font-base-fluid),
+            var(--font-base-max));
+}
+
+.text-sans {
+    font-family: 'Archivo-Variable';
+}
+
+.text-sans-italic {
+    font-family: 'Archivo-VariableItalic';
+}
+
+.text-serif {
+    font-family: 'Zodiak-Variable';
+}
+
+.text-serif-italic {
+    font-family: 'Zodiak-VariableItalic';
+}
+
+.text-xs {
+    font-size: clamp(calc(var(--font-base-min) * pow(var(--font-scale), -1)),
+            calc(var(--font-base-fluid) * pow(var(--font-scale), -1)),
+            calc(var(--font-base-max) * pow(var(--font-scale), -1)));
+}
+
+.text-md {
+    font-size: clamp(calc(var(--font-base-min) * var(--font-scale)),
+            calc(var(--font-base-fluid) * var(--font-scale)),
+            calc(var(--font-base-max) * var(--font-scale)));
+}
+
+.text-lg {
+    font-size: clamp(calc(var(--font-base-min) * pow(var(--font-scale), 2)),
+            calc(var(--font-base-fluid) * pow(var(--font-scale), 2)),
+            calc(var(--font-base-max) * pow(var(--font-scale), 2)));
+}
+
+.text-xl {
+    font-size: clamp(calc(var(--font-base-min) * pow(var(--font-scale), 3)),
+            calc(var(--font-base-fluid) * pow(var(--font-scale), 3)),
+            calc(var(--font-base-max) * pow(var(--font-scale), 3)));
+}
+
+.text-2xl {
+    font-size: clamp(calc(var(--font-base-min) * pow(var(--font-scale), 4)),
+            calc(var(--font-base-fluid) * pow(var(--font-scale), 4)),
+            calc(var(--font-base-max) * pow(var(--font-scale), 4)));
+}
+
+.text-3xl {
+    font-size: clamp(calc(var(--font-base-min) * pow(var(--font-scale), 5)),
+            calc(var(--font-base-fluid) * pow(var(--font-scale), 5)),
+            calc(var(--font-base-max) * pow(var(--font-scale), 5)));
+}
+
+.text-4xl {
+    font-size: clamp(calc(var(--font-base-min) * pow(var(--font-scale), 6)),
+            calc(var(--font-base-fluid) * pow(var(--font-scale), 6)),
+            calc(var(--font-base-max) * pow(var(--font-scale), 6)));
+}

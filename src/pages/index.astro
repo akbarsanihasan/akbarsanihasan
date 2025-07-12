@@ -1,18 +1,30 @@
 ---
-import Header from "../components/Header.astro";
-import "../styles/global.css";
+import {literal} from 'astro:schema'
+import '../styles/global.css'
+type Socials = {platform: string; url: string}[]
+
+const socials: Socials = [
+    {
+        platform: 'GitHub,',
+        url: 'https://github.com/akbarsanihasan',
+    },
+    {
+        platform: 'Instagram.',
+        url: 'https://instagram.com/akbarsanihasan',
+    },
+]
 const projects = [
     {
-        name: "Politikuang",
-        url: "https://github.com/akbarsanihasan/politik-uang",
-        category: "Application",
+        name: 'Politikuang',
+        url: 'https://github.com/akbarsanihasan/politik-uang',
+        category: 'Application',
     },
     {
-        name: "Punokawan",
-        url: "https://github.com/akbarsanihasan/punokawan",
-        category: "Game Engine",
+        name: 'Punokawan',
+        url: 'https://github.com/akbarsanihasan/punokawan',
+        category: 'Game Engine',
     },
-];
+]
 ---
 
 <!doctype html>
@@ -20,169 +32,229 @@ const projects = [
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Akbar Sani Hasan.</title>
+        <title>Akbar Sani Hasan</title>
     </head>
-
-    <style>
-        .home {
-            width: 80vw;
-            min-height: 100vh;
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-
-            main {
-                flex: 1;
-                display: flex;
-                align-items: start;
-                flex-direction: column;
-                justify-content: start;
-                margin-top: 5vh;
-                .content {
-                    margin: 5vh 0;
-                    width: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    .headlines {
-                        margin-bottom: 2rem;
-                        .headline {
-                            margin: 0;
-                            font-family: "MainSerif";
-                            font-weight: 500;
-                            font-size: clamp(26px, 5vw, 64px);
-                        }
-                        .subheadline {
-                            margin: 0;
-                            padding: 0;
-                            font-size: clamp(18px, 1.8vw, 32px);
-                        }
-                    }
-                    .projects {
-                        .title {
-                            display: inline-block;
-                            font-weight: 600;
-                            margin-bottom: 0.8rem;
-                        }
-                        ul {
-                            margin: 0;
-                            padding: 0;
-                            li {
-                                margin-bottom: 0.5rem;
-                                list-style: none;
-                                a {
-                                    text-decoration: none;
-                                    color: var(--fg);
-                                }
-                            }
-                        }
-                        a {
-                            text-decoration: none;
-                            color: var(--fg);
-                        }
-                    }
-                    .career {
-                        margin-top: 2rem;
-                        display: flex;
-                        flex-direction: column;
-                        .title {
-                            font-weight: 600;
-                        }
-                        .timeline {
-                            margin-top: 0.2rem;
-                            font-style: italic;
-                        }
-                        p {
-                            margin: 0;
-                            padding: 0;
-                            margin-top: 0.3rem;
-                        }
-                    }
-                }
-                .contact {
-                    a {
-                        text-decoration: none;
-                        color: var(--fg);
-                        margin: 0.5rem 0;
-                        margin-right: 0.8rem;
-                    }
-                }
-            }
-        }
-
-        @media screen and (min-width: 720px) {
-            .home {
-                main {
-                    .content {
-                        flex-direction: row;
-                        flex-wrap: wrap;
-                        .headlines {
-                            margin-right: 12vw;
-                        }
-                    }
-                }
-            }
-        }
-    </style>
     <body>
-        <div class="home">
-            <Header />
+        <div class="container-lg">
+            <header>
+                <nav>
+                    <ul class="pages">
+                        <li>
+                            <a class="effect-shine" href="/works">Works,</a>
+                        </li>
+                        <li><a class="effect-shine" href="/blog">Blogs,</a></li>
+                        <li>
+                            <a class="effect-shine" href="/about">About.</a>
+                        </li>
+                    </ul>
+                </nav>
+                <ul class="socials">
+                    {
+                        socials.map((social) => (
+                            <li>
+                                <a
+                                    class="effect-underline"
+                                    href={social.url}
+                                    target="_blank"
+                                >
+                                    {social.platform}
+                                </a>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </header>
             <main>
-                <span class="location text-s"
-                    >Klaten, Central Java, Indonesia.</span
-                >
-
-                <div class="content">
-                    <div class="headlines">
-                        <h1 class="headline">Software Engineer.</h1>
-                        <p class="subheadline">
-                            Glamorizing performance, simplicity & freedom.
+                <section class="intro">
+                    <div class="headline">
+                        <h1 class="brand text-2xl text-serif">
+                            Akbar Sani Hasan.
+                        </h1>
+                        <p class="tagline text-lg">
+                            Software engineer focusing on performance, <span
+                                class="text-lg text-serif-italic"
+                                >simplicity</span
+                            >, and freedom.
                         </p>
+                        <div class="contact">
+                            <a class="effect-underline">Resume,</a>
+                            <a class="effect-underline"
+                                >akbarsanihasan@gmail.com.</a
+                            >
+                        </div>
                     </div>
-                    <div class="projects">
-                        <span class="title text-lg">Featured projects</span>
-                        <ul>
+                    <div class="experience">
+                        <h3 class="text-md">
+                            Internship / CV.Karya Hidup Sentosa
+                        </h3>
+                        <span class="text-sans-italic"
+                            >1 year / March 2020 - March 2022</span
+                        >
+                        <p>
+                            Developing and maintaining <span
+                                class="text-sans-italic"
+                                >Enterprise Resource Planning</span
+                            > using PHP(CI3), JQuery, and SQL database
+                        </p>
+                        <a href="" class="effect-underline">Read more</a>
+                    </div>
+                </section>
+                <section class="pro">
+                    <div class="featured-project">
+                        <span class="title"
+                            ><a href="" class="effect-underline text-md"
+                                >Featured Project</a
+                            ></span
+                        >
+                        <ul class="projects">
                             {
                                 projects.map((project) => (
                                     <li>
-                                        <a
-                                            href={project.url}
-                                            target="_blank"
-                                            class="effect-shine"
-                                        >
-                                            {project.name} ({project.category})
-                                        </a>
+                                        <span>
+                                            <a
+                                                href="{project.platform}"
+                                                class="effect-shine"
+                                            >
+                                                {project.name}
+                                            </a>{' '}
+                                            / {project.category}
+                                        </span>
                                     </li>
                                 ))
                             }
                         </ul>
-                        <a href="" target="_blank" class="effect-underline">
-                            More
-                        </a>
                     </div>
-                    <div class="career">
-                        <span class="title text-lg">Recent career</span>
-                        <span class="timeline"
-                            >CV.Karya Hidup Sentosa ~ Internship</span
-                        >
-                        <span class="timeline">March 2020 - March 2022</span>
-                        <p class="text-md">
-                            Maintaining and developing Enterprise Resource
-                            Planning (ERP) using PHP fullstack technology
-                        </p>
-                    </div>
-                </div>
-
-                <div class="contact">
-                    <a class="text-lg effect-underline" href=""
-                        >akbarsanihasan@gmail.com.</a
-                    >
-                    <a
-                        class="text-lg effect-underline"
-                        href="Resume.pdf"
-                        target="_blank">Resume,</a
-                    >
-                </div>
+                    <div class="latest-article"></div>
+                </section>
             </main>
         </div>
     </body>
 </html>
+
+<style>
+    .container-lg {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    header {
+        height: 24vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    header nav {
+        order: 1;
+    }
+    header nav .pages {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    header .socials {
+        order: 3;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+    }
+    header .socials li:not(:last-child) {
+        margin-right: 0.8rem;
+    }
+    header .status {
+        order: 2;
+    }
+    main {
+        display: flex;
+        flex-direction: column;
+    }
+    main section.intro {
+        display: flex;
+        flex-direction: column;
+    }
+    main section.intro .headline {
+        margin-bottom: 0.8rem;
+    }
+    main section.intro .headline h1.brand {
+        margin: 0;
+        font-weight: 600;
+        margin-bottom: 0.8rem;
+    }
+    main section.intro .headline p.tagline {
+        margin: 0;
+        padding: 0;
+        backgound: red;
+        margin-bottom: 0.8rem;
+        width: min(100%, 678px);
+    }
+    main section.intro .contact {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+    main section.intro .contact a {
+        margin: 0.3rem 0;
+    }
+    main section.intro .experience {
+        width: min(100%, 550px);
+    }
+    main section.intro .experience h3 {
+        margin: 0.8rem 0;
+    }
+    main section.intro .experience p {
+        text-align: justify;
+    }
+    main section.pro {
+        margin-top: 6vh;
+    }
+    main section.pro .featured-project .title a {
+        font-weight: 600;
+    }
+    main section.pro .featured-project .projects {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    main section.pro .projects li {
+        margin: 0.8rem 0;
+        padding: 0;
+    }
+    @media screen and (min-width: 1000px) {
+        header {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        header {
+            align-items: center;
+        }
+        header nav .pages,
+        header .socials {
+            justify-content: unset;
+        }
+        header nav .pages li:not(:last-child) {
+            margin-right: 0.8rem;
+        }
+        main section.intro {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: start;
+        }
+        main section.intro .headline {
+            margin-right: 2rem;
+        }
+        main section.intro .headline h1.brand {
+            margin: 0;
+        }
+        main section.intro .contact {
+            flex-direction: row;
+        }
+        main section.intro .contact a:not(:last-child) {
+            margin-right: 0.8rem;
+        }
+        main section.intro .experience h3 {
+            margin-top: 0;
+        }
+    }
+</style>

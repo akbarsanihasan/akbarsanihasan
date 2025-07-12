@@ -1,42 +1,61 @@
 ---
-import "../styles/global.css";
+import '../styles/global.css'
 ---
 
-<!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>404</title>
+        <title>Page Not found</title>
     </head>
-    <style>
-        main {
-            min-width: 100vw;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            h1 {
-                margin: 0;
-                font-family: "MainSerif";
-                font-size: clamp(32px, 6vw, 72px);
-                font-style: italic;
-            }
-
-            a {
-                color: var(--fg);
-                text-decoration: none;
-            }
-        }
-    </style>
     <body>
-        <main>
-            <h1>Error !</h1>
-            <h2 class="text-xl">404 - Page not found</h2>
-            <p>The page you are looking for is not available</p>
-            <a class="effect-underline" onclick="history.back()">Go back</a>
+        <main class="container">
+            <h1 class="text-4xl text-serif-italic">Error !</h1>
+            <h2 class="text-lg">404 - Not found</h2>
+            <p class="text-md">
+                The page you are looking for is not available.
+            </p>
+            <a id="backlink" class="effect-underline">Go back</a>
         </main>
     </body>
 </html>
+
+<style>
+    main {
+        min-width: 100vw;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    main h1,
+    main h2,
+    main p {
+        margin: 0;
+        text-align: center;
+    }
+
+    main h1 {
+        margin-bottom: 1rem;
+    }
+
+    main h2 {
+        margin-bottom: 0.8rem;
+    }
+    main p {
+        margin-bottom: 1.5rem;
+    }
+
+    main a {
+        color: var(--fg);
+        text-decoration: none;
+    }
+</style>
+
+<script>
+    document.querySelector('#backlink')?.addEventListener('click', () => {
+        history.back()
+    })
+</script>
