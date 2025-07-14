@@ -12,6 +12,10 @@ body {
     color: var(--fg);
 }
 
+* {
+    vertical-align: top;
+}
+
 a {
     cursor: pointer;
     color: var(--fg);
@@ -68,7 +72,6 @@ a.effect-shine {
     position: relative;
     overflow: hidden;
     text-decoration: none;
-    vertical-align: middle;
 }
 
 a.effect-shine::before {
@@ -118,11 +121,11 @@ a.effect-shade::after {
 }
 
 .container {
-    width: min(95vw, 900px);
-    margin: auto;
+    width: min(90%, 1024px);
+    margin: 0 auto;
 }
 
 .container-lg {
-    width: min(95vw, 1200px);
-    margin: auto;
+    width: min(90%, 1366px);
+    margin: 0 auto;
 }

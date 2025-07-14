@@ -1,30 +1,30 @@
 ---
-import {literal} from 'astro:schema'
-import '../styles/global.css'
-type Socials = {platform: string; url: string}[]
+import "../styles/global.css";
 
+type Socials = { name: string; url: string }[];
 const socials: Socials = [
     {
-        platform: 'GitHub,',
-        url: 'https://github.com/akbarsanihasan',
+        name: "GitHub,",
+        url: "https://github.com/akbarsanihasan",
     },
     {
-        platform: 'Instagram.',
-        url: 'https://instagram.com/akbarsanihasan',
+        name: "Instagram.",
+        url: "https://instagram.com/akbarsanihasan",
     },
-]
-const projects = [
+];
+type Projects = { name: string; url: string; category: string | string[] }[];
+const projects: Projects = [
     {
-        name: 'Politikuang',
-        url: 'https://github.com/akbarsanihasan/politik-uang',
-        category: 'Application',
+        name: "Politikuang",
+        url: "https://github.com/akbarsanihasan/politik-uang",
+        category: "Application",
     },
     {
-        name: 'Punokawan',
-        url: 'https://github.com/akbarsanihasan/punokawan',
-        category: 'Game Engine',
+        name: "Wayang",
+        url: "https://github.com/akbarsanihasan/punokawan",
+        category: "Game Engine",
     },
-]
+];
 ---
 
 <!doctype html>
@@ -35,29 +35,21 @@ const projects = [
         <title>Akbar Sani Hasan</title>
     </head>
     <body>
-        <div class="container-lg">
+        <div class="wrapper container">
             <header>
                 <nav>
-                    <ul class="pages">
-                        <li>
-                            <a class="effect-shine" href="/works">Works,</a>
-                        </li>
-                        <li><a class="effect-shine" href="/blog">Blogs,</a></li>
-                        <li>
-                            <a class="effect-shine" href="/about">About.</a>
-                        </li>
+                    <ul>
+                        <li><a href="" class="effect-shine">About,</a></li>
+                        <li><a href="" class="effect-shine">Works,</a></li>
+                        <li><a href="" class="effect-shine">Blogs.</a></li>
                     </ul>
                 </nav>
                 <ul class="socials">
                     {
                         socials.map((social) => (
                             <li>
-                                <a
-                                    class="effect-underline"
-                                    href={social.url}
-                                    target="_blank"
-                                >
-                                    {social.platform}
+                                <a href={social.url} class="effect-underline">
+                                    {social.name}
                                 </a>
                             </li>
                         ))
@@ -65,66 +57,47 @@ const projects = [
                 </ul>
             </header>
             <main>
-                <section class="intro">
-                    <div class="headline">
-                        <h1 class="brand text-2xl text-serif">
-                            Akbar Sani Hasan.
-                        </h1>
-                        <p class="tagline text-lg">
-                            Software engineer focusing on performance, <span
-                                class="text-lg text-serif-italic"
-                                >simplicity</span
-                            >, and freedom.
+                <section class="presentable">
+                    <div class="info">
+                        <h1 class="text-3xl text-serif">Akbar Sani Hasan.</h1>
+                        <p class="text-xl">
+                            Software engineer focusing on performance,
+                            simplicity, <span class="text-xl text-serif-italic"
+                                >freedom</span
+                            > & collaboration.
                         </p>
-                        <div class="contact">
-                            <a class="effect-underline">Resume,</a>
-                            <a class="effect-underline"
+                        <div class="contacts">
+                            <a
+                                href="Resume.pdf"
+                                target="_blank"
+                                class="effect-underline">Resume,</a
+                            >
+                            <a href="" class="effect-underline"
                                 >akbarsanihasan@gmail.com.</a
                             >
                         </div>
                     </div>
-                    <div class="experience">
-                        <h3 class="text-md">
-                            Internship / CV.Karya Hidup Sentosa
-                        </h3>
-                        <span class="text-sans-italic"
-                            >1 year / March 2020 - March 2022</span
-                        >
-                        <p>
-                            Developing and maintaining <span
-                                class="text-sans-italic"
-                                >Enterprise Resource Planning</span
-                            > using PHP(CI3), JQuery, and SQL database
-                        </p>
-                        <a href="" class="effect-underline">Read more</a>
-                    </div>
                 </section>
-                <section class="pro">
-                    <div class="featured-project">
-                        <span class="title"
-                            ><a href="" class="effect-underline text-md"
-                                >Featured Project</a
-                            ></span
-                        >
-                        <ul class="projects">
-                            {
-                                projects.map((project) => (
-                                    <li>
-                                        <span>
-                                            <a
-                                                href="{project.platform}"
-                                                class="effect-shine"
-                                            >
-                                                {project.name}
-                                            </a>{' '}
-                                            / {project.category}
-                                        </span>
-                                    </li>
-                                ))
-                            }
-                        </ul>
+                <section class="projects">
+                    <div class="title">
+                        <span>Projects</span>
+                        <a href="" class="effect-underline">More</a>
                     </div>
-                    <div class="latest-article"></div>
+                    <ul>
+                        {
+                            projects.map((project) => (
+                                <li>
+                                    <a href={project.url} class="effect-shine">
+                                        {project.name}
+                                    </a>
+                                    <span> / </span>
+                                    <a href={project.url} class="category">
+                                        {project.category}
+                                    </a>
+                                </li>
+                            ))
+                        }
+                    </ul>
                 </section>
             </main>
         </div>
@@ -132,129 +105,101 @@ const projects = [
 </html>
 
 <style>
-    .container-lg {
-        min-height: 100vh;
+    .wrapper {
         display: flex;
         flex-direction: column;
+        min-height: 100vh;
     }
     header {
-        height: 24vh;
+        height: 20vh;
         display: flex;
-        flex-direction: column;
         justify-content: space-evenly;
+        flex-direction: column;
     }
-    header nav {
-        order: 1;
-    }
-    header nav .pages {
+    header nav ul,
+    header ul.socials {
         margin: 0;
         padding: 0;
-        height: 100%;
         display: flex;
+        align-items: center;
+    }
+    header nav ul li,
+    header ul.socials li {
+        margin-right: 0.6em;
+    }
+    header ul.socials {
+        list-style: none;
+    }
+    header nav ul {
         justify-content: space-between;
     }
-    header .socials {
-        order: 3;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        display: flex;
-    }
-    header .socials li:not(:last-child) {
-        margin-right: 0.8rem;
-    }
-    header .status {
-        order: 2;
-    }
     main {
-        display: flex;
-        flex-direction: column;
+        flex: 1;
     }
-    main section.intro {
-        display: flex;
-        flex-direction: column;
+    main section.presentable .info p {
+        text-align: justify;
+        margin: 0.3rem 0;
     }
-    main section.intro .headline {
-        margin-bottom: 0.8rem;
-    }
-    main section.intro .headline h1.brand {
-        margin: 0;
-        font-weight: 600;
-        margin-bottom: 0.8rem;
-    }
-    main section.intro .headline p.tagline {
-        margin: 0;
-        padding: 0;
-        backgound: red;
-        margin-bottom: 0.8rem;
-        width: min(100%, 678px);
-    }
-    main section.intro .contact {
+    main section.presentable .info .contacts {
         display: flex;
         flex-direction: column;
         align-items: start;
     }
-    main section.intro .contact a {
-        margin: 0.3rem 0;
+    main section.presentable .info .contacts a {
+        margin-top: 0.6em;
     }
-    main section.intro .experience {
-        width: min(100%, 550px);
+    main section.projects {
+        margin-top: 4vh;
     }
-    main section.intro .experience h3 {
-        margin: 0.8rem 0;
+    main section.projects .title {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.6rem;
     }
-    main section.intro .experience p {
-        text-align: justify;
-    }
-    main section.pro {
-        margin-top: 6vh;
-    }
-    main section.pro .featured-project .title a {
+    main section.projects .title span {
         font-weight: 600;
     }
-    main section.pro .featured-project .projects {
+    main section.projects ul {
         margin: 0;
         padding: 0;
         list-style: none;
     }
-    main section.pro .projects li {
-        margin: 0.8rem 0;
-        padding: 0;
+    main section.projects ul li {
+        display: flex;
     }
-    @media screen and (min-width: 1000px) {
-        header {
+    main section.projects ul li:not(:last-child) {
+        margin-bottom: 0.6rem;
+    }
+    main section.projects ul li a {
+        text-decoration: none;
+        flex: 1;
+    }
+    main section.projects ul li a.category {
+        text-align: right;
+    }
+    @media screen and (min-width: 768px) {
+        .wrapper {
             flex-direction: row;
+            padding: 10vh 0;
+        }
+        header {
+            height: unset;
             justify-content: space-between;
         }
-        header {
-            align-items: center;
+        header nav ul,
+        header ul.socials {
+            flex-direction: column;
+            align-items: end;
         }
-        header nav .pages,
-        header .socials {
-            justify-content: unset;
+        main {
+            width: 100%;
+            padding: 0 10vw;
         }
-        header nav .pages li:not(:last-child) {
-            margin-right: 0.8rem;
-        }
-        main section.intro {
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: start;
-        }
-        main section.intro .headline {
-            margin-right: 2rem;
-        }
-        main section.intro .headline h1.brand {
-            margin: 0;
-        }
-        main section.intro .contact {
+        main section.presentable .info .contacts {
             flex-direction: row;
         }
-        main section.intro .contact a:not(:last-child) {
-            margin-right: 0.8rem;
-        }
-        main section.intro .experience h3 {
-            margin-top: 0;
+        main section.presentable .info .contacts a:not(:last-child) {
+            margin-right: 0.6rem;
         }
     }
 </style>

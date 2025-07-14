@@ -1,10 +1,11 @@
 @import 'sanitize.css/typography.css';
 
 :root {
-    --font-base-min: 14px;
-    --font-base-max: 18px;
-    --font-base-fluid: 3vw;
-    --font-scale: 1.25;
+    --font-size-min: 16px;
+    --font-size-max: 18px;
+    --font-size-fluid: 3vw;
+    --scale-minor-third: 1.125;
+    --scale-major-third: 1.25;
 }
 
 /**
@@ -18,8 +19,8 @@
 @font-face {
     font-family: 'Archivo-Variable';
     src:
-        url('../fonts/Archivo-Variable.woff2') format('woff2'),
-        url('../fonts/Archivo-Variable.woff') format('woff');
+        url('/fonts/Archivo-Variable.woff2') format('woff2'),
+        url('/fonts/Archivo-Variable.woff') format('woff');
     font-display: swap;
     font-style: normal;
 }
@@ -27,8 +28,8 @@
 @font-face {
     font-family: 'Archivo-VariableItalic';
     src:
-        url('../fonts/Archivo-VariableItalic.woff2') format('woff2'),
-        url('../fonts/Archivo-VariableItalic.woff') format('woff');
+        url('/fonts/Archivo-VariableItalic.woff2') format('woff2'),
+        url('/fonts/Archivo-VariableItalic.woff') format('woff');
     font-display: swap;
     font-style: italic;
 }
@@ -44,8 +45,8 @@
 @font-face {
     font-family: 'Zodiak-Variable';
     src:
-        url('../fonts/Zodiak-Variable.woff2') format('woff2'),
-        url('../fonts/Zodiak-Variable.woff') format('woff');
+        url('/fonts/Zodiak-Variable.woff2') format('woff2'),
+        url('/fonts/Zodiak-Variable.woff') format('woff');
     font-weight: 100 900;
     font-display: swap;
     font-style: normal;
@@ -54,17 +55,34 @@
 @font-face {
     font-family: 'Zodiak-VariableItalic';
     src:
-        url('../fonts/Zodiak-VariableItalic.woff2') format('woff2'),
-        url('../fonts/Zodiak-VariableItalic.woff') format('woff');
+        url('/fonts/Zodiak-VariableItalic.woff2') format('woff2'),
+        url('/fonts/Zodiak-VariableItalic.woff') format('woff');
     font-weight: 100 900;
     font-display: swap;
     font-style: italic;
 }
 
 * {
-    font-size: clamp(var(--font-base-min),
-            var(--font-base-fluid),
-            var(--font-base-max));
+    font-family: 'Archivo-Variable';
+    font-size: clamp(var(--font-size-min),
+            var(--font-size-fluid),
+            var(--font-size-max));
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+}
+
+p {
+    margin: 0;
+    padding: 0;
 }
 
 .text-sans {
@@ -83,44 +101,62 @@
     font-family: 'Zodiak-VariableItalic';
 }
 
-.text-xs {
-    font-size: clamp(calc(var(--font-base-min) * pow(var(--font-scale), -1)),
-            calc(var(--font-base-fluid) * pow(var(--font-scale), -1)),
-            calc(var(--font-base-max) * pow(var(--font-scale), -1)));
-}
-
-.text-md {
-    font-size: clamp(calc(var(--font-base-min) * var(--font-scale)),
-            calc(var(--font-base-fluid) * var(--font-scale)),
-            calc(var(--font-base-max) * var(--font-scale)));
+.text-sm {
+    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale-minor-third), -1)),
+            calc(var(--font-size-fluid) * pow(var(--scale-major-third), -1)),
+            calc(var(--font-size-max) * pow(var(--scale-major-third), -1)));
 }
 
 .text-lg {
-    font-size: clamp(calc(var(--font-base-min) * pow(var(--font-scale), 2)),
-            calc(var(--font-base-fluid) * pow(var(--font-scale), 2)),
-            calc(var(--font-base-max) * pow(var(--font-scale), 2)));
+    font-size: clamp(calc(var(--font-size-min) * var(--scale-minor-third)),
+            calc(var(--font-size-fluid) * var(--scale-major-third)),
+            calc(var(--font-size-max) * var(--scale-major-third)));
 }
 
 .text-xl {
-    font-size: clamp(calc(var(--font-base-min) * pow(var(--font-scale), 3)),
-            calc(var(--font-base-fluid) * pow(var(--font-scale), 3)),
-            calc(var(--font-base-max) * pow(var(--font-scale), 3)));
+    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale-minor-third), 2)),
+            calc(var(--font-size-fluid) * pow(var(--scale-major-third), 2)),
+            calc(var(--font-size-max) * pow(var(--scale-major-third), 2)));
 }
 
 .text-2xl {
-    font-size: clamp(calc(var(--font-base-min) * pow(var(--font-scale), 4)),
-            calc(var(--font-base-fluid) * pow(var(--font-scale), 4)),
-            calc(var(--font-base-max) * pow(var(--font-scale), 4)));
+    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale-minor-third), 3)),
+            calc(var(--font-size-fluid) * pow(var(--scale-major-third), 3)),
+            calc(var(--font-size-max) * pow(var(--scale-major-third), 3)));
 }
 
 .text-3xl {
-    font-size: clamp(calc(var(--font-base-min) * pow(var(--font-scale), 5)),
-            calc(var(--font-base-fluid) * pow(var(--font-scale), 5)),
-            calc(var(--font-base-max) * pow(var(--font-scale), 5)));
+    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale-minor-third), 4)),
+            calc(var(--font-size-fluid) * pow(var(--scale-major-third), 4)),
+            calc(var(--font-size-max) * pow(var(--scale-major-third), 4)));
 }
 
 .text-4xl {
-    font-size: clamp(calc(var(--font-base-min) * pow(var(--font-scale), 6)),
-            calc(var(--font-base-fluid) * pow(var(--font-scale), 6)),
-            calc(var(--font-base-max) * pow(var(--font-scale), 6)));
+    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale-minor-third), 5)),
+            calc(var(--font-size-fluid) * pow(var(--scale-major-third), 5)),
+            calc(var(--font-size-max) * pow(var(--scale-major-third), 5)));
+}
+
+.text-5xl {
+    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale-minor-third), 6)),
+            calc(var(--font-size-fluid) * pow(var(--scale-major-third), 6)),
+            calc(var(--font-size-max) * pow(var(--scale-major-third), 6)));
+}
+
+.text-6xl {
+    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale-minor-third), 7)),
+            calc(var(--font-size-fluid) * pow(var(--scale-major-third), 7)),
+            calc(var(--font-size-max) * pow(var(--scale-major-third), 7)));
+}
+
+.text-7xl {
+    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale-minor-third), 8)),
+            calc(var(--font-size-fluid) * pow(var(--scale-major-third), 8)),
+            calc(var(--font-size-max) * pow(var(--scale-major-third), 8)));
+}
+
+.text-8xl {
+    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale-minor-third), 9)),
+            calc(var(--font-size-fluid) * pow(var(--scale-major-third), 9)),
+            calc(var(--font-size-max) * pow(var(--scale-major-third), 9)));
 }
