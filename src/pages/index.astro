@@ -1,30 +1,48 @@
 ---
-import "../styles/global.css";
+import '../styles/global.css'
 
-type Socials = { name: string; url: string }[];
+type Socials = { name: string; url: string }[]
 const socials: Socials = [
     {
-        name: "GitHub,",
-        url: "https://github.com/akbarsanihasan",
+        name: 'GitHub,',
+        url: 'https://github.com/akbarsanihasan',
     },
     {
-        name: "Instagram.",
-        url: "https://instagram.com/akbarsanihasan",
+        name: 'Instagram.',
+        url: 'https://instagram.com/akbarsanihasan',
     },
-];
-type Projects = { name: string; url: string; category: string | string[] }[];
+]
+type Projects = { name: string; url: string; category: string | string[] }[]
 const projects: Projects = [
     {
-        name: "Politikuang",
-        url: "https://github.com/akbarsanihasan/politik-uang",
-        category: "Application",
+        name: 'Politikuang',
+        url: 'https://github.com/akbarsanihasan/politik-uang',
+        category: 'Application',
     },
     {
-        name: "Wayang",
-        url: "https://github.com/akbarsanihasan/punokawan",
-        category: "Game Engine",
+        name: 'Wayang',
+        url: 'https://github.com/akbarsanihasan/punokawan',
+        category: 'Game Engine',
     },
-];
+]
+const BlogpostPlaceholder = [
+    {
+        title: 'Some Descriptive title',
+        excerpt:
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, suscipit excepturi? Similique tempora odio sint, asperiores repudiandae quaerat.',
+        url: '/blogs/some',
+        readtime: '10min',
+        date: new Date().toDateString(),
+    },
+    {
+        title: 'Some Descriptive title',
+        excerpt:
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, suscipit excepturi? Similique tempora odio sint, asperiores repudiandae quaerat.',
+        url: '/blogs/some',
+        readtime: '10min',
+        date: new Date().toDateString(),
+    },
+]
 ---
 
 <!doctype html>
@@ -58,46 +76,67 @@ const projects: Projects = [
             </header>
             <main>
                 <section class="presentable">
-                    <div class="info">
-                        <h1 class="text-3xl text-serif">Akbar Sani Hasan.</h1>
-                        <p class="text-xl">
-                            Software engineer focusing on performance,
-                            simplicity, <span class="text-xl text-serif-italic"
-                                >freedom</span
-                            > & collaboration.
-                        </p>
-                        <div class="contacts">
-                            <a
-                                href="Resume.pdf"
-                                target="_blank"
-                                class="effect-underline">Resume,</a
-                            >
-                            <a href="" class="effect-underline"
-                                >akbarsanihasan@gmail.com.</a
-                            >
-                        </div>
+                    <h1 class="text-3xl text-serif">Akbar Sani Hasan.</h1>
+                    <p class="text-xl">
+                        Software engineer focusing on <br />performance,
+                        simplicity, <span class="text-xl text-serif-italic"
+                            >freedom</span
+                        > & collaboration.
+                    </p>
+                    <div class="contacts">
+                        <a
+                            href="Resume.pdf"
+                            target="_blank"
+                            class="effect-underline">Resume,</a
+                        >
+                        <a href="" class="effect-underline"
+                            >akbarsanihasan@gmail.com.</a
+                        >
                     </div>
                 </section>
                 <section class="projects">
-                    <div class="title">
-                        <span>Projects</span>
-                        <a href="" class="effect-underline">More</a>
+                    <div class="title text-lg">
+                        <span class="text-lg">Projects</span>
+                        <a href="" class="text-lg effect-underline">More</a>
                     </div>
                     <ul>
                         {
                             projects.map((project) => (
                                 <li>
                                     <a href={project.url} class="effect-shine">
-                                        {project.name}
-                                    </a>
-                                    <span> / </span>
-                                    <a href={project.url} class="category">
-                                        {project.category}
+                                        <span>{project.name} </span>
+                                        <span> / </span>
+                                        <span>{project.category}</span>
                                     </a>
                                 </li>
                             ))
                         }
                     </ul>
+                </section>
+                <section class="blogs">
+                    <div class="title text-lg">
+                        <span class="text-lg">Blogs</span>
+                        <a href="" class="text-lg effect-underline">More</a>
+                    </div>
+                    {
+                        BlogpostPlaceholder.map((blog) => {
+                            return (
+                                <a class="blog effect-shine">
+                                    <span class="title">{blog.title}</span>
+                                    <div class="meta">
+                                        <span class="text-sans-italic">
+                                            {blog.date}
+                                        </span>
+                                        <span class="text-sans-italic">/</span>
+                                        <span class="text-sans-italic">
+                                            {blog.readtime}
+                                        </span>
+                                    </div>
+                                    <p>{blog.excerpt}</p>
+                                </a>
+                            )
+                        })
+                    }
                 </section>
             </main>
         </div>
@@ -108,13 +147,13 @@ const projects: Projects = [
     .wrapper {
         display: flex;
         flex-direction: column;
-        min-height: 100vh;
+        height: 100vh;
     }
     header {
-        height: 20vh;
         display: flex;
         justify-content: space-evenly;
         flex-direction: column;
+        min-height: 8em;
     }
     header nav ul,
     header ul.socials {
@@ -125,38 +164,40 @@ const projects: Projects = [
     }
     header nav ul li,
     header ul.socials li {
-        margin-right: 0.6em;
+        margin-right: 0.8em;
     }
     header ul.socials {
         list-style: none;
     }
-    header nav ul {
+    header nav ul,
+    header ul.socials {
         justify-content: space-between;
     }
     main {
         flex: 1;
+        overflow: scroll;
+        scrollbar-width: none;
     }
-    main section.presentable .info p {
-        text-align: justify;
-        margin: 0.3rem 0;
+    main section.presentable h1,
+    main section.presentable p {
+        margin-bottom: 0.2em;
     }
-    main section.presentable .info .contacts {
+    main section.presentable .contacts {
         display: flex;
-        flex-direction: column;
         align-items: start;
+        flex-wrap: wrap;
     }
-    main section.presentable .info .contacts a {
-        margin-top: 0.6em;
+    main section.presentable .contacts a {
+        margin: 0.8em 0.8em 0 0;
     }
+    main section.blogs,
     main section.projects {
-        margin-top: 4vh;
+        margin-top: 2em;
     }
+    main section.blogs .title,
     main section.projects .title {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 0.6rem;
-    }
-    main section.projects .title span {
         font-weight: 600;
     }
     main section.projects ul {
@@ -164,26 +205,26 @@ const projects: Projects = [
         padding: 0;
         list-style: none;
     }
-    main section.projects ul li {
-        display: flex;
-    }
-    main section.projects ul li:not(:last-child) {
-        margin-bottom: 0.6rem;
-    }
     main section.projects ul li a {
-        text-decoration: none;
-        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        margin: 0.8em 0;
     }
-    main section.projects ul li a.category {
-        text-align: right;
+    main section.blogs .blog {
+        padding: 0.8rem 0;
     }
-    @media screen and (min-width: 768px) {
+    main section.blogs .blog .meta {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.6rem 0;
+    }
+    @media screen and (min-width: 1024px) {
         .wrapper {
             flex-direction: row;
-            padding: 10vh 0;
+            padding: 4em 0;
         }
         header {
-            height: unset;
+            width: 10%;
             justify-content: space-between;
         }
         header nav ul,
@@ -191,15 +232,12 @@ const projects: Projects = [
             flex-direction: column;
             align-items: end;
         }
+        header nav ul li,
+        header ul.socials li {
+            margin-right: 0em;
+        }
         main {
-            width: 100%;
-            padding: 0 10vw;
-        }
-        main section.presentable .info .contacts {
-            flex-direction: row;
-        }
-        main section.presentable .info .contacts a:not(:last-child) {
-            margin-right: 0.6rem;
+            padding: 0 6em;
         }
     }
 </style>
