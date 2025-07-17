@@ -1,0 +1,70 @@
+---
+import '../styles/global.css'
+import BasicMeta from '../components/BasicMeta.astro'
+
+const publicEmail = 'akbarsanihasan@gmail.com'
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <BasicMeta
+            author="Akbar Sani Hasan"
+            keywords={['Akbar', 'Sani', 'Hasan']}
+            description="Software engineer focusing on performance, simplicity, freedom and colaboration"
+        />
+        <title>Akbar Sani Hasan</title>
+    </head>
+    <body>
+        <main class="container">
+            <h1 class="text-xl text-serif-italic">Success !</h1>
+            <p>Email successfully copied to your clipboard.</p>
+            <div class="actions">
+                <a id="close-action" class="effect-underline">Close</a>
+                <a href={`mailto:${publicEmail}`} class="effect-underline"
+                    >Open email</a
+                >
+            </div>
+            <span id="public-email" class="text-serif-italic"
+                >{publicEmail}</span
+            >
+        </main>
+    </body>
+</html>
+
+<style>
+    .container {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 0.8em;
+
+        h1,
+        p,
+        .actions {
+            margin-bottom: 1em;
+            text-align: center;
+        }
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .actions a:not(:last-child) {
+            margin-right: 0.8em;
+        }
+
+        span {
+            margin-top: 0.8em;
+        }
+    }
+</style>
+
+<script>
+    document
+        .querySelector('#close-action')
+        ?.addEventListener('click', () => window.close())
+</script>

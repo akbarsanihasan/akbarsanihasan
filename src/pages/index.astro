@@ -1,5 +1,8 @@
 ---
 import '../styles/global.css'
+import BasicMeta from '../components/BasicMeta.astro'
+
+const publicEmail = 'akbarsanihasan@gmail.com'
 
 type Socials = { name: string; url: string }[]
 const socials: Socials = [
@@ -48,18 +51,27 @@ const BlogpostPlaceholder = [
 <!doctype html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <BasicMeta
+            author="Akbar Sani Hasan"
+            keywords={['Akbar', 'Sani', 'Hasan']}
+            description="Software engineer focusing on performance, simplicity, freedom and colaboration"
+        />
         <title>Akbar Sani Hasan</title>
     </head>
-    <body>
+    <body data-baseurl={Astro.url}>
         <div class="wrapper container">
             <header>
                 <nav>
                     <ul>
-                        <li><a href="" class="effect-shine">About,</a></li>
-                        <li><a href="" class="effect-shine">Works,</a></li>
-                        <li><a href="" class="effect-shine">Blogs.</a></li>
+                        <li>
+                            <a href="/about" class="effect-shine">About,</a>
+                        </li>
+                        <li>
+                            <a href="/works" class="effect-shine">Works,</a>
+                        </li>
+                        <li>
+                            <a href="/blogs" class="effect-shine">Blogs.</a>
+                        </li>
                     </ul>
                 </nav>
                 <ul class="socials">
@@ -76,7 +88,7 @@ const BlogpostPlaceholder = [
             </header>
             <main>
                 <section class="presentable">
-                    <h1 class="text-3xl text-serif">Akbar Sani Hasan.</h1>
+                    <h1 class="text-4xl text-serif">Akbar Sani Hasan.</h1>
                     <p class="text-xl">
                         Software engineer focusing on <br />performance,
                         simplicity, <span class="text-xl text-serif-italic"
@@ -85,12 +97,15 @@ const BlogpostPlaceholder = [
                     </p>
                     <div class="contacts">
                         <a
+                            id="email"
+                            data-email={publicEmail}
+                            target="_blank"
+                            class="effect-underline">Email,</a
+                        >
+                        <a
                             href="Resume.pdf"
                             target="_blank"
-                            class="effect-underline">Resume,</a
-                        >
-                        <a href="" class="effect-underline"
-                            >akbarsanihasan@gmail.com.</a
+                            class="effect-underline">Resume.</a
                         >
                     </div>
                 </section>
@@ -114,7 +129,7 @@ const BlogpostPlaceholder = [
                     </ul>
                 </section>
                 <section class="blogs">
-                    <div class="title text-lg">
+                    <div class="title">
                         <span class="text-lg">Blogs</span>
                         <a href="" class="text-lg effect-underline">More</a>
                     </div>
@@ -180,7 +195,7 @@ const BlogpostPlaceholder = [
     }
     main section.presentable h1,
     main section.presentable p {
-        margin-bottom: 0.2em;
+        margin-bottom: 0.1em;
     }
     main section.presentable .contacts {
         display: flex;
@@ -188,7 +203,7 @@ const BlogpostPlaceholder = [
         flex-wrap: wrap;
     }
     main section.presentable .contacts a {
-        margin: 0.8em 0.8em 0 0;
+        margin: 0.6em 0.6em 0 0;
     }
     main section.blogs,
     main section.projects {
@@ -206,9 +221,9 @@ const BlogpostPlaceholder = [
         list-style: none;
     }
     main section.projects ul li a {
+        margin: 0.8em 0;
         display: flex;
         justify-content: space-between;
-        margin: 0.8em 0;
     }
     main section.blogs .blog {
         padding: 0.8rem 0;
@@ -221,7 +236,7 @@ const BlogpostPlaceholder = [
     @media screen and (min-width: 1024px) {
         .wrapper {
             flex-direction: row;
-            padding: 4em 0;
+            padding: 3.5em 0;
         }
         header {
             width: 10%;
@@ -241,3 +256,18 @@ const BlogpostPlaceholder = [
         }
     }
 </style>
+
+<script>
+    interface EmailActionElement extends HTMLAnchorElement {
+        dataset: {
+            email: string
+        }
+    }
+
+    const email = document.getElementById('email') as EmailActionElement
+    email.addEventListener('click', function () {
+        navigator.clipboard.writeText(this.dataset.email as string).then(() => {
+            window.open('email', '_blank')
+        })
+    })
+</script>
