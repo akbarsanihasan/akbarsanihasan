@@ -1,16 +1,108 @@
 ---
-import BasicMeta from '../components/BasicMeta.astro'
+import MainHead from '@components/MainHead.astro'
+import MainLayout from '@layouts/MainLayout.astro'
+
+const kiloToPound = (kilo: number) => kilo * 2.205
+const centiToFeet = (centi: number) => centi * 0.03281
+const capitalizeString = (str: string) => {
+    const letters = str.split('')
+    const cap = letters[0].toUpperCase()
+    letters.shift()
+    return `${cap}${letters.join('')}`
+}
+
+const weightKg = 80
+const heightCm = 165
+const profile: { [id: string]: string } = {
+    full_name: 'Akbar Sani Hasan',
+    gender: 'Male',
+    birthday: '22, September, 2003',
+    nationality: 'Indonesian',
+    ethnicity: 'Javanese',
+    weight: `${weightKg}kg / ${kiloToPound(weightKg).toFixed(1)}lb`,
+    height: `${heightCm}cm / ${centiToFeet(168).toFixed(1)}ft`,
+    hair_color: 'Dark',
+    eye_color: 'Dark Brown',
+    gamer_tag: 'Swollen Badger',
+}
 ---
 
 <!doctype html>
 <html lang="en">
-    <head>
-        <BasicMeta
-            author="Akbar Sani Hasan"
-            keywords={['Akbar', 'Sani', 'Hasan']}
-            description="Software engineer focusing on performance, simplicity, freedom and colaboration"
-        />
-        <title>Akbar Sani Hasan</title>
-    </head>
-    <body> </body>
+    <MainHead
+        author="Akbar Sani Hasan"
+        keywords={['Akbar', 'Sani', 'Hasan']}
+        description="Software engineer focusing on performance, simplicity, freedom and colaboration"
+        title="About - Akbar Sani Hasan"
+    />
+    <body>
+        <MainLayout>
+            <span class="proverb text-display-italic text-semibold"
+                >"Tak kenal maka tak sayang"</span
+            >
+            <section class="profile">
+                <h1 class="text-bold text-display text-lg">
+                    * General Profile
+                </h1>
+                <ul>
+                    {
+                        Object.keys(profile).map((key) => (
+                            <li>
+                                <div class="profile-list">
+                                    <span class="key text-bold">
+                                        {key
+                                            .split('_')
+                                            .map((word) =>
+                                                capitalizeString(word),
+                                            )
+                                            .join(' ')}
+                                    </span>
+                                    <span class="value text-serif-italic">
+                                        {profile[key]}
+                                    </span>
+                                </div>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </section>
+            <section>
+                <h1 class="text-bold text-lg">* Personal life</h1>
+                <p>Still working on it</p>
+            </section>
+        </MainLayout>
+    </body>
 </html>
+
+<style>
+    .proverb {
+        display: block;
+    }
+    section {
+        padding: 0.6em 0;
+    }
+    section h1 {
+        border-bottom: 0.08em solid var(--fg);
+        padding: 0.6em 0;
+        margin: 0.6em 0;
+    }
+    section.profile ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    section.profile ul li .profile-list {
+        display: flex;
+        justify-content: space-between;
+    }
+    section.profile ul li {
+        margin: 0.8em 0;
+    }
+    section.profile ul li .profile-list .key {
+        padding-right: 1em;
+    }
+    section.profile ul li .profile-list .value {
+        flex: 1;
+        text-align: right;
+    }
+</style>

@@ -1,0 +1,36 @@
+---
+import '@styles/global.css'
+import MainNav from '../components/MainNav.astro'
+---
+
+<div class="main-layout container">
+    <MainNav />
+    <main>
+        <slot />
+    </main>
+</div>
+
+<style>
+    .main-layout {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
+    main {
+        flex: 1;
+        overflow: auto;
+        scrollbar-width: none;
+        padding: 1em 0;
+    }
+
+    @media screen and (min-width: 1024px) {
+        .main-layout {
+            flex-direction: row;
+            padding: 2em 0;
+        }
+        main {
+            padding: 0 6em;
+            scrollbar-width: thin;
+        }
+    }
+</style>

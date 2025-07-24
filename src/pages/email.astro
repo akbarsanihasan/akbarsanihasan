@@ -1,6 +1,6 @@
 ---
-import '../styles/global.css'
-import BasicMeta from '../components/BasicMeta.astro'
+import '@styles/global.css'
+import MainHead from '@components/MainHead.astro'
 
 const publicEmail = 'akbarsanihasan@gmail.com'
 ---
@@ -8,16 +8,11 @@ const publicEmail = 'akbarsanihasan@gmail.com'
 <!doctype html>
 <html lang="en">
     <head>
-        <BasicMeta
-            author="Akbar Sani Hasan"
-            keywords={['Akbar', 'Sani', 'Hasan']}
-            description="Software engineer focusing on performance, simplicity, freedom and colaboration"
-        />
-        <title>Akbar Sani Hasan</title>
+        <MainHead title="Akbar Sani Hasan" />
     </head>
     <body>
         <main class="container">
-            <h1 class="text-xl text-serif-italic">Success !</h1>
+            <h1 class="text-xl text-display-italic">Success !</h1>
             <p>Email successfully copied to your clipboard.</p>
             <div class="actions">
                 <a id="close-action" class="effect-underline">Close</a>
@@ -25,7 +20,7 @@ const publicEmail = 'akbarsanihasan@gmail.com'
                     >Open email</a
                 >
             </div>
-            <span id="public-email" class="text-serif-italic"
+            <span id="public-email" class="text-display-italic"
                 >{publicEmail}</span
             >
         </main>

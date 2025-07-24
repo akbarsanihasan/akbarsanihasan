@@ -12,21 +12,34 @@ body {
     color: var(--fg);
 }
 
-* {
-    vertical-align: top;
+ul {
+    margin: 0;
+    padding: 0;
 }
 
 a {
     cursor: pointer;
+}
+
+button {
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+a.effect-underline,
+button.effect-underline {
+    position: relative;
+    text-decoration: none;
     color: var(--fg);
 }
 
-a.effect-underline {
-    position: relative;
-    text-decoration: none;
-}
-
-a.effect-underline::before {
+a.effect-underline::before,
+button.effect-underline::before {
     content: '';
     position: absolute;
     bottom: 0;
@@ -39,7 +52,8 @@ a.effect-underline::before {
     transition: transform 500ms var(--wuzz) 50ms;
 }
 
-a.effect-underline::after {
+a.effect-underline::after,
+button.effect-underline::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -52,29 +66,29 @@ a.effect-underline::after {
     transition: transform 500ms var(--wuzz);
 }
 
-a.effect-underline:hover::before {
+a.effect-underline:hover::before,
+button.effect-underline:hover::before {
     transform-origin: left;
     transform: scaleX(100%);
 }
 
-a.effect-underline:hover::after {
+a.effect-underline:hover::after,
+button.effect-underline:hover::after {
     transform-origin: right;
     transform: scaleX(0%);
 }
 
-a.effect-shade:hover::after {
-    transform-origin: left;
-    transform: scaleX(100%);
-}
-
-a.effect-shine {
+a.effect-shine,
+button.effect-shine {
     display: inline-block;
     position: relative;
     overflow: hidden;
     text-decoration: none;
+    color: var(--fg);
 }
 
-a.effect-shine::before {
+a.effect-shine::before,
+button.effect-shine::before {
     content: '';
     position: absolute;
     top: 0;
@@ -92,32 +106,9 @@ a.effect-shine::before {
     transition: 1s;
 }
 
-a.effect-shine:hover::before {
+a.effect-shine:hover::before,
+button.effect-shine:hover::before {
     transform: translateX(100%);
-}
-
-a.effect-shade {
-    position: relative;
-    text-decoration: none;
-    overflow: hidden;
-}
-
-a.effect-shade::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(90deg,
-            rgba(225, 225, 225, 0),
-            rgba(225, 225, 225, 0.6),
-            rgba(225, 225, 225, 0));
-    transform: scaleX(0%);
-    transform-origin: right;
-    transition: transform 300ms var(--wuzz);
 }
 
 .container {
@@ -128,4 +119,19 @@ a.effect-shade::after {
 .container-lg {
     width: min(90%, 1440px);
     margin: 0 auto;
+}
+
+:where([data-astro-image]) {
+    object-fit: var(--fit);
+    object-position: var(--pos);
+}
+
+:where([data-astro-image='full-width']) {
+    width: 100%;
+    height: 100%;
+}
+
+:where([data-astro-image='constrained']) {
+    max-width: 100%;
+    height: 100%;
 }

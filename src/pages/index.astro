@@ -1,273 +1,255 @@
 ---
-import '../styles/global.css'
-import BasicMeta from '../components/BasicMeta.astro'
+import MainHead from '@components/MainHead.astro'
+import MainLayout from '@layouts/MainLayout.astro'
+import { getCollection } from 'astro:content'
 
-const publicEmail = 'akbarsanihasan@gmail.com'
-
-type Socials = { name: string; url: string }[]
-const socials: Socials = [
-    {
-        name: 'GitHub,',
-        url: 'https://github.com/akbarsanihasan',
-    },
-    {
-        name: 'Instagram.',
-        url: 'https://instagram.com/akbarsanihasan',
-    },
-]
-type Projects = { name: string; url: string; category: string | string[] }[]
-const projects: Projects = [
-    {
-        name: 'Politikuang',
-        url: 'https://github.com/akbarsanihasan/politik-uang',
-        category: 'Application',
-    },
-    {
-        name: 'Wayang',
-        url: 'https://github.com/akbarsanihasan/punokawan',
-        category: 'Game Engine',
-    },
-]
-const BlogpostPlaceholder = [
-    {
-        title: 'Some Descriptive title',
-        excerpt:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, suscipit excepturi? Similique tempora odio sint, asperiores repudiandae quaerat.',
-        url: '/blogs/some',
-        readtime: '10min',
-        date: new Date().toDateString(),
-    },
-    {
-        title: 'Some Descriptive title',
-        excerpt:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, suscipit excepturi? Similique tempora odio sint, asperiores repudiandae quaerat.',
-        url: '/blogs/some',
-        readtime: '10min',
-        date: new Date().toDateString(),
-    },
-]
+const experiences = await getCollection('experiences')
+const projects = await getCollection('projects')
+const blogPosts = await getCollection('blogs')
 ---
 
 <!doctype html>
 <html lang="en">
     <head>
-        <BasicMeta
-            author="Akbar Sani Hasan"
+        <MainHead
             keywords={['Akbar', 'Sani', 'Hasan']}
             description="Software engineer focusing on performance, simplicity, freedom and colaboration"
+            title="Akbar Sani Hasan"
         />
-        <title>Akbar Sani Hasan</title>
     </head>
-    <body data-baseurl={Astro.url}>
-        <div class="wrapper container">
-            <header>
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="/about" class="effect-shine">About,</a>
-                        </li>
-                        <li>
-                            <a href="/works" class="effect-shine">Works,</a>
-                        </li>
-                        <li>
-                            <a href="/blogs" class="effect-shine">Blogs.</a>
-                        </li>
-                    </ul>
-                </nav>
-                <ul class="socials">
-                    {
-                        socials.map((social) => (
-                            <li>
-                                <a href={social.url} class="effect-underline">
-                                    {social.name}
-                                </a>
-                            </li>
-                        ))
-                    }
-                </ul>
-            </header>
-            <main>
-                <section class="presentable">
-                    <h1 class="text-4xl text-serif">Akbar Sani Hasan.</h1>
-                    <p class="text-xl">
-                        Software engineer focusing on <br />performance,
-                        simplicity, <span class="text-xl text-serif-italic"
-                            >freedom</span
-                        > & collaboration.
-                    </p>
-                    <div class="contacts">
-                        <a
-                            id="email"
-                            data-email={publicEmail}
-                            target="_blank"
-                            class="effect-underline">Email,</a
-                        >
-                        <a
-                            href="Resume.pdf"
-                            target="_blank"
-                            class="effect-underline">Resume.</a
-                        >
-                    </div>
-                </section>
-                <section class="projects">
-                    <div class="title text-lg">
-                        <span class="text-lg">Projects</span>
-                        <a href="" class="text-lg effect-underline">More</a>
-                    </div>
-                    <ul>
-                        {
-                            projects.map((project) => (
-                                <li>
-                                    <a href={project.url} class="effect-shine">
-                                        <span>{project.name} </span>
-                                        <span> / </span>
-                                        <span>{project.category}</span>
+    <body>
+        <MainLayout>
+            <section class="presentable">
+                <h1 class="text-3xl text-display">Akbar Sani Hasan.</h1>
+                <p class="text-lg">
+                    A villager equipped with programming skills always trying to
+                    prioritize performance, simplicity & <span
+                        class="text-lg text-bold text-sans-italic"
+                    >
+                        freedom,
+                    </span>
+                    also i use <span class="text-lg text-display-italic"
+                        >arch</span
+                    > and
+                    <span class="text-lg text-display-italic">neovim</span> btw.
+                </p>
+            </section>
+            <section class="experiences">
+                <h5 class="text-display text-bold">Experiences</h5>
+                {
+                    experiences.map(({ data }) => (
+                        <div class="experience">
+                            <div class="heading">
+                                <span class="instance">
+                                    <a
+                                        href={data.website}
+                                        target="_blank"
+                                        class="effect-underline text-bold"
+                                    >
+                                        {data.instance}
                                     </a>
-                                </li>
-                            ))
-                        }
-                    </ul>
-                </section>
-                <section class="blogs">
-                    <div class="title">
-                        <span class="text-lg">Blogs</span>
-                        <a href="" class="text-lg effect-underline">More</a>
-                    </div>
+                                </span>
+                                <span class="devider">\</span>
+                                <span class="duration">
+                                    {new Date(data.start).toLocaleDateString(
+                                        Astro.currentLocale,
+                                        { month: 'long', year: 'numeric' },
+                                    )}{' '}
+                                    -{' '}
+                                    {data.end
+                                        ? new Date(data.end).toLocaleDateString(
+                                              Astro.currentLocale,
+                                              {
+                                                  month: 'long',
+                                                  year: 'numeric',
+                                              },
+                                          )
+                                        : 'Present'}
+                                </span>
+                            </div>
+                            <p class="desc">{data.description}</p>
+                        </div>
+                    ))
+                }
+            </section>
+            <section class="projects">
+                <div class="title">
+                    <h5 class="text-display text-bold">Projects</h5>
                     {
-                        BlogpostPlaceholder.map((blog) => {
-                            return (
-                                <a class="blog effect-shine">
-                                    <span class="title">{blog.title}</span>
-                                    <div class="meta">
-                                        <span class="text-sans-italic">
-                                            {blog.date}
-                                        </span>
-                                        <span class="text-sans-italic">/</span>
-                                        <span class="text-sans-italic">
-                                            {blog.readtime}
-                                        </span>
-                                    </div>
-                                    <p>{blog.excerpt}</p>
-                                </a>
-                            )
-                        })
+                        blogPosts.length > 2 && (
+                            <a
+                                href="projects"
+                                class="text-bold effect-underline"
+                            >
+                                More
+                            </a>
+                        )
                     }
-                </section>
-            </main>
-        </div>
+                </div>
+                {
+                    projects.slice(0, 2).map(({ id, data }) => (
+                        <div class="project">
+                            <a
+                                href={`/projects/${id}`}
+                                class="heading effect-shine"
+                            >
+                                <span class="text-bold">{data.name} </span>
+                                <span class="devider">\</span>
+                                <span>{data.category.join(' - ')}</span>
+                            </a>
+                            <p class="description">{data.description}</p>
+                            <div class="actions">
+                                {data.url.website && (
+                                    <a
+                                        href={data.url.repo}
+                                        class="website effect-underline"
+                                        target="_blank"
+                                    >
+                                        Visit
+                                    </a>
+                                )}
+                                {data.url.repo && (
+                                    <a
+                                        href={data.url.repo}
+                                        class="source-code effect-underline"
+                                        target="_blank"
+                                    >
+                                        Source Code
+                                    </a>
+                                )}
+                            </div>
+                        </div>
+                    ))
+                }
+            </section>
+            <section class="blogs">
+                <div class="title">
+                    <h5 class="text-display text-bold">Blogs</h5>
+                    {
+                        blogPosts.length > 2 && (
+                            <a href="/blogs" class="text-bold effect-underline">
+                                More
+                            </a>
+                        )
+                    }
+                </div>
+                {
+                    blogPosts.slice(0, 2).map((posts) => {
+                        return (
+                            <div class="blog effect-shine">
+                                <a
+                                    href={`blogs/${posts.id}`}
+                                    class="heading effect-shine"
+                                >
+                                    <span class="text-bold">
+                                        {posts.data.title}
+                                    </span>
+                                    <span class="text-sans-italic">
+                                        {new Date(
+                                            posts.data.published_date,
+                                        ).toLocaleDateString(undefined, {
+                                            year: 'numeric',
+                                            month: 'long',
+                                            day: 'numeric',
+                                        })}
+                                    </span>
+                                </a>
+                                <p class="excerpt">{posts.data.excerpt}</p>
+                            </div>
+                        )
+                    })
+                }
+                {blogPosts.length <= 0 && <div class="notice">No post</div>}
+            </section>
+        </MainLayout>
     </body>
 </html>
 
 <style>
-    .wrapper {
+    section:not(:last-child) {
+        margin-bottom: 2em;
+    }
+    section.presentable h1,
+    section.presentable p {
+        padding-bottom: 0.2em;
+    }
+    section.experiences .experience {
+        padding: 0.2em 0;
+    }
+    section.experiences .experience .heading {
+        padding: 0.6em 0;
         display: flex;
-        flex-direction: column;
-        height: 100vh;
-    }
-    header {
-        display: flex;
-        justify-content: space-evenly;
-        flex-direction: column;
-        min-height: 8em;
-    }
-    header nav ul,
-    header ul.socials {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        align-items: center;
-    }
-    header nav ul li,
-    header ul.socials li {
-        margin-right: 0.8em;
-    }
-    header ul.socials {
-        list-style: none;
-    }
-    header nav ul,
-    header ul.socials {
         justify-content: space-between;
-    }
-    main {
-        flex: 1;
-        overflow: scroll;
-        scrollbar-width: none;
-    }
-    main section.presentable h1,
-    main section.presentable p {
-        margin-bottom: 0.1em;
-    }
-    main section.presentable .contacts {
-        display: flex;
-        align-items: start;
         flex-wrap: wrap;
     }
-    main section.presentable .contacts a {
-        margin: 0.6em 0.6em 0 0;
+    section.experiences .experience .heading span {
+        padding: 0.2em 0;
     }
-    main section.blogs,
-    main section.projects {
-        margin-top: 2em;
+    section.experiences .experience .heading .devider {
+        margin: 0 0.6em;
     }
-    main section.blogs .title,
-    main section.projects .title {
+    section.projects .title,
+    section.blogs .title {
         display: flex;
         justify-content: space-between;
-        font-weight: 600;
+        align-items: center;
     }
-    main section.projects ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
+    section.projects .project,
+    section.blogs .blog {
+        padding: 0.2em 0;
     }
-    main section.projects ul li a {
-        margin: 0.8em 0;
+    section.projects .project .heading {
+        padding: 0.6em 0;
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
     }
-    main section.blogs .blog {
-        padding: 0.8rem 0;
+    section.projects .project .heading span {
+        padding: 0.2em 0;
     }
-    main section.blogs .blog .meta {
+    section.projects .project .heading .devider {
+        margin: 0 0.8em;
+    }
+    section.projects .project .actions {
+        padding: 0.8em 0;
         display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    section.projects .project .actions a:first-child {
+        margin-right: 0.8em;
+    }
+    section.blogs .blog .heading {
+        padding: 0.6em 0;
+        display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
-        padding: 0.6rem 0;
+        align-items: center;
+    }
+    section.blogs .blog .heading span {
+        padding: 0.2em 0;
+    }
+    section.blogs .notice {
+        min-height: 5em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     @media screen and (min-width: 1024px) {
-        .wrapper {
-            flex-direction: row;
-            padding: 3.5em 0;
+        section:not(:last-child) {
+            margin-bottom: 1.5em;
         }
-        header {
-            width: 10%;
-            justify-content: space-between;
+        section.presentable p {
+            text-align: justify;
         }
-        header nav ul,
-        header ul.socials {
-            flex-direction: column;
-            align-items: end;
+        section.experiences .experience .desc {
+            text-align: justify;
         }
-        header nav ul li,
-        header ul.socials li {
-            margin-right: 0em;
+        section.blogs .blog .excerpt {
+            text-align: justify;
         }
-        main {
-            padding: 0 6em;
+        section.projects .project .description {
+            text-align: justify;
         }
     }
 </style>
-
-<script>
-    interface EmailActionElement extends HTMLAnchorElement {
-        dataset: {
-            email: string
-        }
-    }
-
-    const email = document.getElementById('email') as EmailActionElement
-    email.addEventListener('click', function () {
-        navigator.clipboard.writeText(this.dataset.email as string).then(() => {
-            window.open('email', '_blank')
-        })
-    })
-</script>

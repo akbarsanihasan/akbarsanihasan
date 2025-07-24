@@ -1,4 +1,8 @@
 @import 'sanitize.css/typography.css';
+@import '@fontsource-variable/archivo';
+@import '@fontsource-variable/archivo/wdth-italic.css';
+@import '@fontsource-variable/playfair-display';
+@import '@fontsource-variable/playfair-display/wght-italic.css';
 
 :root {
     --font-size-min: 16px;
@@ -8,65 +12,49 @@
     --scale-major-third: 1.25;
 }
 
-/**
-* @license
-*
-* Font Family: Archivo
-* Designed by: Omnibus-Type
-* URL: https://www.fontshare.com/fonts/archivo
-* © 2025 Indian Type Foundry
-*/
-@font-face {
-    font-family: 'Archivo-Variable';
-    src:
-        url('/fonts/Archivo-Variable.woff2') format('woff2'),
-        url('/fonts/Archivo-Variable.woff') format('woff');
-    font-display: swap;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Archivo-VariableItalic';
-    src:
-        url('/fonts/Archivo-VariableItalic.woff2') format('woff2'),
-        url('/fonts/Archivo-VariableItalic.woff') format('woff');
-    font-display: swap;
-    font-style: italic;
-}
-
-/**
-* @license
-*
-* Font Family: Zodiak
-* Designed by: Jérémie Hornus, Gaetan Baehr, Jean-Baptiste Morizot, Alisa Nowak, Theo Guillard
-* URL: https://www.fontshare.com/fonts/zodiak
-* © 2025 Indian Type Foundry
-*/
-@font-face {
-    font-family: 'Zodiak-Variable';
-    src:
-        url('/fonts/Zodiak-Variable.woff2') format('woff2'),
-        url('/fonts/Zodiak-Variable.woff') format('woff');
-    font-weight: 100 900;
-    font-display: swap;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Zodiak-VariableItalic';
-    src:
-        url('/fonts/Zodiak-VariableItalic.woff2') format('woff2'),
-        url('/fonts/Zodiak-VariableItalic.woff') format('woff');
-    font-weight: 100 900;
-    font-display: swap;
-    font-style: italic;
-}
-
-* {
-    font-family: 'Archivo-Variable';
+body {
+    font-family: 'Archivo Variable';
     font-size: clamp(var(--font-size-min),
             var(--font-size-fluid),
             var(--font-size-max));
+    font-weight: 400;
+    word-spacing: 0.05em;
+    vertical-align: center;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.text-sans {
+    font-family: 'Archivo Variable';
+}
+
+.text-sans-italic {
+    font-family: 'Archivo Variable';
+    font-style: italic;
+}
+
+.text-display {
+    font-family: 'Playfair Display Variable';
+}
+
+.text-display-italic {
+    font-family: 'Playfair Display Variable';
+    font-style: italic;
+}
+
+.text-semibold {
+    font-weight: 500;
+}
+
+.text-bold {
+    font-weight: 600;
+}
+
+.text-extrabold {
+    font-weight: 700;
 }
 
 h1,
@@ -80,63 +68,48 @@ h6 {
     font-weight: 500;
 }
 
-p {
-    margin: 0;
-    padding: 0;
-}
-
-.text-sans {
-    font-family: 'Archivo-Variable';
-}
-
-.text-sans-italic {
-    font-family: 'Archivo-VariableItalic';
-}
-
-.text-serif {
-    font-family: 'Zodiak-Variable';
-}
-
-.text-serif-italic {
-    font-family: 'Zodiak-VariableItalic';
-}
-
 .text-sm {
     font-size: clamp(calc(var(--font-size-min) * pow(var(--scale-minor-third), -1)),
             calc(var(--font-size-fluid) * pow(var(--scale-major-third), -1)),
             calc(var(--font-size-max) * pow(var(--scale-major-third), -1)));
 }
 
+h6,
 .text-lg {
     font-size: clamp(calc(var(--font-size-min) * var(--scale-minor-third)),
             calc(var(--font-size-fluid) * var(--scale-major-third)),
             calc(var(--font-size-max) * var(--scale-major-third)));
 }
 
+h5,
 .text-xl {
     font-size: clamp(calc(var(--font-size-min) * pow(var(--scale-minor-third), 2)),
             calc(var(--font-size-fluid) * pow(var(--scale-major-third), 2)),
             calc(var(--font-size-max) * pow(var(--scale-major-third), 2)));
 }
 
+h4,
 .text-2xl {
     font-size: clamp(calc(var(--font-size-min) * pow(var(--scale-minor-third), 3)),
             calc(var(--font-size-fluid) * pow(var(--scale-major-third), 3)),
             calc(var(--font-size-max) * pow(var(--scale-major-third), 3)));
 }
 
+h3,
 .text-3xl {
     font-size: clamp(calc(var(--font-size-min) * pow(var(--scale-minor-third), 4)),
             calc(var(--font-size-fluid) * pow(var(--scale-major-third), 4)),
             calc(var(--font-size-max) * pow(var(--scale-major-third), 4)));
 }
 
+h2,
 .text-4xl {
     font-size: clamp(calc(var(--font-size-min) * pow(var(--scale-minor-third), 5)),
             calc(var(--font-size-fluid) * pow(var(--scale-major-third), 5)),
             calc(var(--font-size-max) * pow(var(--scale-major-third), 5)));
 }
 
+h1,
 .text-5xl {
     font-size: clamp(calc(var(--font-size-min) * pow(var(--scale-minor-third), 6)),
             calc(var(--font-size-fluid) * pow(var(--scale-major-third), 6)),

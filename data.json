@@ -1,0 +1,13 @@
+{
+    "experiences": [
+        {
+            "slug": "khs",
+            "instance": "CV.Karya Hidup Sentosa",
+            "website": "https://quick.co.id",
+            "start": "2022-03-01",
+            "end": "2023-03-01",
+            "description": "Developing and maintaining Enterprise Resource Planning (ERP) using Fullstack PHP (Codeigniter3, JQuery, PostgreSQL)"
+        }
+    ],
+    "personal": []
+}
