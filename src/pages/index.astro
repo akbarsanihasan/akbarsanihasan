@@ -1,46 +1,46 @@
 ---
-import MainHead from '@components/MainHead.astro'
-import MainLayout from '@layouts/MainLayout.astro'
 import { getCollection } from 'astro:content'
+import BasicHead from '@components/BasicHead.astro'
+import MainLayout from '@layouts/MainLayout.astro'
+import Project from '@components/Projects/Project.astro'
 
 const experiences = await getCollection('experiences')
 const projects = await getCollection('projects')
-const blogPosts = await getCollection('blogs')
 ---
 
 <!doctype html>
 <html lang="en">
     <head>
-        <MainHead
+        <BasicHead
             keywords={['Akbar', 'Sani', 'Hasan']}
-            description="Software engineer focusing on performance, simplicity, freedom and colaboration"
+            description="A villager equipped with programming skills always trying to prioritize performance, simplicity also i use arch and neovim btw."
             title="Akbar Sani Hasan"
         />
     </head>
     <body>
         <MainLayout>
             <section class="presentable">
-                <h1 class="text-3xl text-display">Akbar Sani Hasan.</h1>
-                <p class="text-lg">
+                <p class="bio text-lg">
                     A villager equipped with programming skills always trying to
-                    prioritize performance, simplicity & <span
-                        class="text-lg text-bold text-sans-italic"
+                    prioritize performance, simplicity, <span
+                        class="text-lg text-bold text-italic"
                     >
-                        freedom,
+                        collaboration & freedom,
                     </span>
-                    also i use <span class="text-lg text-display-italic"
+                    also i use <span class="text-lg text-display text-italic"
                         >arch</span
                     > and
-                    <span class="text-lg text-display-italic">neovim</span> btw.
+                    <span class="text-lg text-display text-italic">neovim</span>
+                    btw.
                 </p>
             </section>
             <section class="experiences">
-                <h5 class="text-display text-bold">Experiences</h5>
+                <h5 class="title text-display text-bold">Experiences</h5>
                 {
                     experiences.map(({ data }) => (
                         <div class="experience">
                             <div class="heading">
-                                <span class="instance">
+                                <span class="content instance">
                                     <a
                                         href={data.website}
                                         target="_blank"
@@ -49,25 +49,30 @@ const blogPosts = await getCollection('blogs')
                                         {data.instance}
                                     </a>
                                 </span>
-                                <span class="devider">\</span>
-                                <span class="duration">
-                                    {new Date(data.start).toLocaleDateString(
-                                        Astro.currentLocale,
-                                        { month: 'long', year: 'numeric' },
-                                    )}{' '}
-                                    -{' '}
-                                    {data.end
-                                        ? new Date(data.end).toLocaleDateString(
-                                              Astro.currentLocale,
-                                              {
+                                <div class="info">
+                                    <span class="content text-italic">
+                                        {data.type}
+                                    </span>
+                                    <span class="content duration text-italic">
+                                        {new Date(
+                                            data.start,
+                                        ).toLocaleDateString(undefined, {
+                                            month: 'long',
+                                            year: 'numeric',
+                                        })}{' '}
+                                        -{' '}
+                                        {data.end
+                                            ? new Date(
+                                                  data.end,
+                                              ).toLocaleDateString(undefined, {
                                                   month: 'long',
                                                   year: 'numeric',
-                                              },
-                                          )
-                                        : 'Present'}
-                                </span>
+                                              })
+                                            : 'Present'}
+                                    </span>
+                                </div>
                             </div>
-                            <p class="desc">{data.description}</p>
+                            <p class="description">{data.description}</p>
                         </div>
                     ))
                 }
@@ -75,181 +80,48 @@ const blogPosts = await getCollection('blogs')
             <section class="projects">
                 <div class="title">
                     <h5 class="text-display text-bold">Projects</h5>
-                    {
-                        blogPosts.length > 2 && (
-                            <a
-                                href="projects"
-                                class="text-bold effect-underline"
-                            >
-                                More
-                            </a>
-                        )
-                    }
+                    <a href="projects" class="text-bold effect-underline">
+                        More
+                    </a>
                 </div>
                 {
-                    projects.slice(0, 2).map(({ id, data }) => (
-                        <div class="project">
-                            <a
-                                href={`/projects/${id}`}
-                                class="heading effect-shine"
-                            >
-                                <span class="text-bold">{data.name} </span>
-                                <span class="devider">\</span>
-                                <span>{data.category.join(' - ')}</span>
-                            </a>
-                            <p class="description">{data.description}</p>
-                            <div class="actions">
-                                {data.url.website && (
-                                    <a
-                                        href={data.url.repo}
-                                        class="website effect-underline"
-                                        target="_blank"
-                                    >
-                                        Visit
-                                    </a>
-                                )}
-                                {data.url.repo && (
-                                    <a
-                                        href={data.url.repo}
-                                        class="source-code effect-underline"
-                                        target="_blank"
-                                    >
-                                        Source Code
-                                    </a>
-                                )}
-                            </div>
-                        </div>
-                    ))
+                    projects
+                        .slice(0, 2)
+                        .map(({ id, data }) => <Project data={data} id={id} />)
                 }
-            </section>
-            <section class="blogs">
-                <div class="title">
-                    <h5 class="text-display text-bold">Blogs</h5>
-                    {
-                        blogPosts.length > 2 && (
-                            <a href="/blogs" class="text-bold effect-underline">
-                                More
-                            </a>
-                        )
-                    }
-                </div>
-                {
-                    blogPosts.slice(0, 2).map((posts) => {
-                        return (
-                            <div class="blog effect-shine">
-                                <a
-                                    href={`blogs/${posts.id}`}
-                                    class="heading effect-shine"
-                                >
-                                    <span class="text-bold">
-                                        {posts.data.title}
-                                    </span>
-                                    <span class="text-sans-italic">
-                                        {new Date(
-                                            posts.data.published_date,
-                                        ).toLocaleDateString(undefined, {
-                                            year: 'numeric',
-                                            month: 'long',
-                                            day: 'numeric',
-                                        })}
-                                    </span>
-                                </a>
-                                <p class="excerpt">{posts.data.excerpt}</p>
-                            </div>
-                        )
-                    })
-                }
-                {blogPosts.length <= 0 && <div class="notice">No post</div>}
             </section>
         </MainLayout>
     </body>
 </html>
 
 <style>
-    section:not(:last-child) {
-        margin-bottom: 2em;
+    section {
+        padding-bottom: 1.6em;
     }
-    section.presentable h1,
-    section.presentable p {
-        padding-bottom: 0.2em;
+    section.experiences .title {
+        padding-bottom: 0.8em;
     }
-    section.experiences .experience {
-        padding: 0.2em 0;
+    section.experiences .experience:not(:last-child) {
+        padding-bottom: 0.8em;
     }
     section.experiences .experience .heading {
-        padding: 0.6em 0;
+        display: flex;
+        flex-direction: column;
+    }
+    section.experiences .experience .heading .content {
+        padding-bottom: 0.4em;
+    }
+    section.experiences .experience .heading .info {
         display: flex;
         justify-content: space-between;
-        flex-wrap: wrap;
     }
-    section.experiences .experience .heading span {
-        padding: 0.2em 0;
+    section.experiences .experience .description {
+        text-align: justify;
     }
-    section.experiences .experience .heading .devider {
-        margin: 0 0.6em;
-    }
-    section.projects .title,
-    section.blogs .title {
+    section.projects .title {
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-    section.projects .project,
-    section.blogs .blog {
-        padding: 0.2em 0;
-    }
-    section.projects .project .heading {
-        padding: 0.6em 0;
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-    section.projects .project .heading span {
-        padding: 0.2em 0;
-    }
-    section.projects .project .heading .devider {
-        margin: 0 0.8em;
-    }
-    section.projects .project .actions {
-        padding: 0.8em 0;
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-    section.projects .project .actions a:first-child {
-        margin-right: 0.8em;
-    }
-    section.blogs .blog .heading {
-        padding: 0.6em 0;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-    }
-    section.blogs .blog .heading span {
-        padding: 0.2em 0;
-    }
-    section.blogs .notice {
-        min-height: 5em;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    @media screen and (min-width: 1024px) {
-        section:not(:last-child) {
-            margin-bottom: 1.5em;
-        }
-        section.presentable p {
-            text-align: justify;
-        }
-        section.experiences .experience .desc {
-            text-align: justify;
-        }
-        section.blogs .blog .excerpt {
-            text-align: justify;
-        }
-        section.projects .project .description {
-            text-align: justify;
-        }
+        padding-bottom: 0.8em;
     }
 </style>

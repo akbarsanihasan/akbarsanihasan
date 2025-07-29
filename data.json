@@ -1,13 +1,33 @@
 {
     "experiences": [
         {
-            "slug": "khs",
+            "id": "khs",
             "instance": "CV.Karya Hidup Sentosa",
+            "type": "Internship",
             "website": "https://quick.co.id",
             "start": "2022-03-01",
             "end": "2023-03-01",
             "description": "Developing and maintaining Enterprise Resource Planning (ERP) using Fullstack PHP (Codeigniter3, JQuery, PostgreSQL)"
         }
     ],
-    "personal": []
+    "personal": [
+        {
+            "id": "akbar",
+            "full_name": "Akbar Sani Hasan",
+            "gender": "Male",
+            "birthday": "2003-09-22",
+            "nationality": "Indonesia",
+            "ethnicity": "Javanese",
+            "recidency": "Klaten, Central Java",
+            "height_cm": 165,
+            "weight_kg": 80,
+            "hair_color": "Dark",
+            "eye_color": "Dark Brown",
+            "gamer_tag": "Swollen Badger",
+            "email": "akbarsanihasan@gmail.com",
+            "socials": [
+                { "name": "Github.", "url": "https://github.com/akbarsani" }
+            ]
+        }
+    ]
 }

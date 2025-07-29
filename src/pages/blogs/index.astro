@@ -1,17 +1,29 @@
 ---
-import MainHead from '@components/MainHead.astro'
-import ReadingLayout from '@layouts/ReadingLayout.astro'
+import '@styles/global.css'
+import BasicHead from '@components/BasicHead.astro'
 ---
 
 <!doctype html>
-<html lang={Astro.currentLocale}>
-    <head>
-        <MainHead
-            description="Some of my finest writings"
-            title="Blogs - Akbar Sani Hasan"
-        />
-    </head>
+<html lang="en">
+    <BasicHead title="Blogs" />
     <body>
-        <ReadingLayout />
+        <div>
+            <h3 class="text-display">Coming soon !</h3>
+            <a href="/" class="effect-underline">Go Home</a>
+        </div>
     </body>
 </html>
+<style>
+    div {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    h3 {
+        padding-bottom: 0.6em;
+    }
+</style>

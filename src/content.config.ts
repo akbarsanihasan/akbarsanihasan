@@ -1,17 +1,41 @@
 import { file, glob } from 'astro/loaders'
 import { defineCollection, z } from 'astro:content'
 
-const experiences = defineCollection({
+const personal = defineCollection({
     loader: file('data.json', {
-        parser: (text) => {
-            console.log(JSON.parse(text).experiences)
-            return JSON.parse(text).experiences
-        },
+        parser: (text) => JSON.parse(text).personal,
     }),
     schema: z.object({
-        slug: z.string(),
+        full_name: z.string(),
+        gender: z.string(),
+        birthday: z.string().date(),
+        nationality: z.string(),
+        ethnicity: z.string(),
+        recidency: z.string(),
+        height_cm: z.number(),
+        weight_kg: z.number(),
+        hair_color: z.string(),
+        eye_color: z.string(),
+        gamer_tag: z.string(),
+        email: z.string(),
+        socials: z.array(
+            z.object({
+                name: z.string(),
+                url: z.string().url(),
+            }),
+        ),
+    }),
+})
+
+const experiences = defineCollection({
+    loader: file('data.json', {
+        parser: (text) => JSON.parse(text).experiences,
+    }),
+    schema: z.object({
+        id: z.string(),
         instance: z.string(),
         website: z.string().url(),
+        type: z.string(),
         start: z.string().date(),
         end: z.string().date().optional(),
         description: z.string(),
@@ -40,4 +64,4 @@ const projects = defineCollection({
     }),
 })
 
-export const collections = { experiences, blogs, projects }
+export const collections = { personal, experiences, blogs, projects }

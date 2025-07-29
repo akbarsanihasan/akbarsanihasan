@@ -1,27 +1,41 @@
 ---
 import '@styles/global.css'
-import MainHead from '@components/MainHead.astro'
+import BasicHead from '@components/BasicHead.astro'
+import { getCollection } from 'astro:content'
 
-const publicEmail = 'akbarsanihasan@gmail.com'
+interface Props {
+    success: boolean
+}
+
+const [{ data }] = await getCollection('personal')
+const { email } = data
+const status_messages = {
+    success: 'Email has been copied to your clipboard.',
+    failed: 'No interaction detected, failed to copy email.',
+}
+
+const { success } = Astro.props
 ---
 
 <!doctype html>
 <html lang="en">
     <head>
-        <MainHead title="Akbar Sani Hasan" />
+        <BasicHead title="Akbar Sani Hasan" />
     </head>
     <body>
         <main class="container">
-            <h1 class="text-xl text-display-italic">Success !</h1>
-            <p>Email successfully copied to your clipboard.</p>
+            <h1 class="text-xl text-display text-italic">Warning !</h1>
+            <p id="message">
+                {success ? status_messages.success : status_messages.failed}
+            </p>
             <div class="actions">
                 <a id="close-action" class="effect-underline">Close</a>
-                <a href={`mailto:${publicEmail}`} class="effect-underline"
+                <a href={`mailto:${email}`} class="effect-underline"
                     >Open email</a
                 >
             </div>
-            <span id="public-email" class="text-display-italic"
-                >{publicEmail}</span
+            <span id="public-email" class="text-display text-italic"
+                >{email}</span
             >
         </main>
     </body>

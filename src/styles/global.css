@@ -26,9 +26,10 @@ button {
     padding: 0;
     background: none;
     border: none;
+    cursor: pointer;
     font-family: inherit;
     font-size: inherit;
-    cursor: pointer;
+    font-weight: inherit;
 }
 
 a.effect-underline,
@@ -80,7 +81,7 @@ button.effect-underline:hover::after {
 
 a.effect-shine,
 button.effect-shine {
-    display: inline-block;
+    display: block;
     position: relative;
     overflow: hidden;
     text-decoration: none;
@@ -113,6 +114,11 @@ button.effect-shine:hover::before {
 
 .container {
     width: min(90%, 1024px);
+    margin: 0 auto;
+}
+
+.container-md {
+    width: min(90%, 1280px);
     margin: 0 auto;
 }
 

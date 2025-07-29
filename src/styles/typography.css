@@ -3,23 +3,47 @@
 @import '@fontsource-variable/archivo/wdth-italic.css';
 @import '@fontsource-variable/playfair-display';
 @import '@fontsource-variable/playfair-display/wght-italic.css';
+@import '@fontsource/noto-color-emoji';
 
 :root {
-    --font-size-min: 16px;
-    --font-size-max: 18px;
+    --font-size-min: 18px;
+    --font-size-max: 20px;
     --font-size-fluid: 3vw;
-    --scale-minor-third: 1.125;
-    --scale-major-third: 1.25;
+    --scale-minor-third: 1.067;
+    --scale-major-third: 1.125;
 }
 
 body {
-    font-family: 'Archivo Variable';
+    font-family:
+        'Archivo Variable',
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        'Open Sans',
+        'Helvetica Neue',
+        sans-serif;
     font-size: clamp(var(--font-size-min),
             var(--font-size-fluid),
             var(--font-size-max));
     font-weight: 400;
     word-spacing: 0.05em;
     vertical-align: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
 }
 
 p {
@@ -31,18 +55,8 @@ p {
     font-family: 'Archivo Variable';
 }
 
-.text-sans-italic {
-    font-family: 'Archivo Variable';
-    font-style: italic;
-}
-
 .text-display {
     font-family: 'Playfair Display Variable';
-}
-
-.text-display-italic {
-    font-family: 'Playfair Display Variable';
-    font-style: italic;
 }
 
 .text-semibold {
@@ -57,15 +71,8 @@ p {
     font-weight: 700;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    margin: 0;
-    padding: 0;
-    font-weight: 500;
+.text-italic {
+    font-style: italic;
 }
 
 .text-sm {

@@ -1,14 +1,41 @@
 ---
-import MainHead from '@components/MainHead.astro'
+import BasicHead from '@components/BasicHead.astro'
+import MainLayout from '@layouts/MainLayout.astro'
+import Project from '@components/Projects/Project.astro'
+import { getCollection } from 'astro:content'
+
+const projects = await getCollection('projects')
 ---
 
 <!doctype html>
 <html lang="en">
     <head>
-        <MainHead
-            description="I made this with my own two hands, they covered with my blood, sweat, tears and other fluids"
+        <BasicHead
+            description="I work on this projects with my own two hands, they covered with my blood, sweat, tears and other fluids"
             title="Projects - Akbar Sani Hasan"
         />
     </head>
-    <body> </body>
+    <body>
+        <MainLayout>
+            <div class="quote">
+                <span class="text-display text-italic text-semibold"
+                    >"I work on this projects with my own two hands, they
+                    covered with my blood, sweat, tears and other fluids"</span
+                >
+            </div>
+            {
+                projects
+                    .slice(0, 2)
+                    .map(({ id, data }) => <Project data={data} id={id} />)
+            }
+        </MainLayout>
+    </body>
 </html>
+
+<style>
+    .quote {
+        padding-bottom: 0.8em;
+        margin-bottom: 1em;
+        border-bottom: 0.1em solid var(--fg);
+    }
+</style>

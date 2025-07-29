@@ -1,0 +1,86 @@
+---
+import { getCollection } from 'astro:content'
+const [{ data }] = await getCollection('personal')
+const { email, socials } = data
+---
+
+<header>
+    <nav>
+        <a href="/" class="brand text-xl text-display text-bold effect-shine"
+            >Akbar Sani H.</a
+        >
+        <ul class="nav-links">
+            <li>
+                <a href="/about" class="effect-shine">About,</a>
+            </li>
+            <li>
+                <a href="/projects" class="effect-shine">Projects,</a>
+            </li>
+            <li>
+                <a href="/blogs" class="effect-shine">Blogs.</a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="socials">
+        <li>
+            <button id="email" data-email={email} class="effect-underline"
+                >Email,</button
+            >
+        </li>
+        <li>
+            <a href="Resume.pdf" target="_blank" class="effect-underline"
+                >Resume,</a
+            >
+        </li>
+        {
+            socials.map((social) => (
+                <li>
+                    <a
+                        href={social.url}
+                        class="effect-underline"
+                        target="_blank"
+                    >
+                        {social.name}
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</header>
+
+<script>
+    interface EmailActionElement extends HTMLButtonElement {
+        dataset: {
+            email: string
+        }
+    }
+
+    const email = document.getElementById('email') as EmailActionElement
+
+    let emailTimeout: NodeJS.Timeout | null = null
+
+    email.addEventListener('click', function (event) {
+        event.preventDefault()
+        const email = this.dataset.email as string
+
+        if (!navigator.clipboard) {
+            window.location.href = `mailto:${email}`
+            return
+        }
+
+        navigator.clipboard
+            .write([
+                new ClipboardItem({
+                    ['text/plain']: email,
+                }),
+            ])
+            .then(() => {
+                this.innerText = 'Email copied'
+
+                if (emailTimeout) clearTimeout(emailTimeout)
+                emailTimeout = setTimeout(() => {
+                    this.innerText = 'Email'
+                }, 3000)
+            })
+    })
+</script>

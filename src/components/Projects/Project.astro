@@ -1,0 +1,68 @@
+---
+const { id, data } = Astro.props
+---
+
+<div class="project">
+    <div class="heading">
+        <span class="content text-bold">
+            {data.name}
+        </span>
+        <span class="content text-italic">
+            {data.category.join(' - ')}
+        </span>
+    </div>
+    <p class="description">{data.description}</p>
+    <div class="actions">
+        {
+            data.url.website && (
+                <a
+                    href={data.url.repo}
+                    class="website effect-underline"
+                    target="_blank"
+                >
+                    Visit
+                </a>
+            )
+        }
+        {
+            data.url.repo && (
+                <a
+                    href={data.url.repo}
+                    class="source-code effect-underline"
+                    target="_blank"
+                >
+                    Source Code
+                </a>
+            )
+        }
+    </div>
+</div>
+
+<style>
+    .project:not(:last-child) {
+        padding-bottom: 0.6em;
+    }
+    .project .heading {
+        display: flex;
+        flex-direction: column;
+    }
+    .project .heading .content {
+        padding-bottom: 0.4em;
+    }
+    .project .description {
+        padding-bottom: 0.6em;
+    }
+    .project .actions {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .project .actions a:not(:last-child) {
+        margin-right: 0.6em;
+    }
+    @media screen and (min-width: 1024px) {
+        .project .heading {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+</style>

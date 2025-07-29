@@ -1,13 +1,14 @@
 ---
 import '@styles/global.css'
-import MainNav from '../components/MainNav.astro'
+import HeaderNav from '@components/HeaderNav.astro'
 ---
 
 <div class="main-layout container">
-    <MainNav />
+    <HeaderNav />
     <main>
         <slot />
     </main>
+    <slot name="after-main" />
 </div>
 
 <style>
@@ -22,15 +23,66 @@ import MainNav from '../components/MainNav.astro'
         scrollbar-width: none;
         padding: 1em 0;
     }
-
     @media screen and (min-width: 1024px) {
         .main-layout {
             flex-direction: row;
-            padding: 2em 0;
+            padding: 3em 0;
         }
         main {
-            padding: 0 6em;
+            padding: 0 3em;
             scrollbar-width: thin;
+        }
+    }
+</style>
+<style is:global>
+    header {
+        display: flex;
+        flex-direction: column;
+    }
+    header nav {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    header ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+    header nav a.brand {
+        padding: 0.6em 0;
+        align-self: start;
+    }
+    header ul.socials,
+    header nav ul.nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+    header ul.socials li,
+    header nav ul.nav-links li {
+        padding: 0.6em 0;
+    }
+    header ul.socials {
+        list-style: none;
+    }
+    @media screen and (min-width: 1024px) {
+        header {
+            justify-content: space-between;
+        }
+        header nav a.brand {
+            padding: 0;
+            padding-bottom: 0.6em;
+        }
+        header ul.socials,
+        header nav ul.nav-links {
+            flex-direction: column;
+            align-items: end;
+        }
+        header ul.socials li,
+        header nav ul.nav-links li {
+            padding: 0.3em 0;
         }
     }
 </style>
