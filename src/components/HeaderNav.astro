@@ -75,11 +75,11 @@ const { email, socials } = data
                 }),
             ])
             .then(() => {
-                this.innerText = 'Email copied'
+                this.innerText = 'Email copied,'
 
                 if (emailTimeout) clearTimeout(emailTimeout)
                 emailTimeout = setTimeout(() => {
-                    this.innerText = 'Email'
+                    this.innerText = 'Email,'
                 }, 3000)
             })
     })
