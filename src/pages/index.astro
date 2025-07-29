@@ -35,7 +35,7 @@ const projects = await getCollection('projects')
                 </p>
             </section>
             <section class="experiences">
-                <h5 class="title text-display text-bold">Experiences</h5>
+                <h5 class="title text-bold">Experiences</h5>
                 {
                     experiences.map(({ data }) => (
                         <div class="experience">
@@ -79,10 +79,8 @@ const projects = await getCollection('projects')
             </section>
             <section class="projects">
                 <div class="title">
-                    <h5 class="text-display text-bold">Projects</h5>
-                    <a href="projects" class="text-bold effect-underline">
-                        More
-                    </a>
+                    <h5 class="text-bold">Projects</h5>
+                    <a href="projects" class="text-bold effect-shine"> More </a>
                 </div>
                 {
                     projects
@@ -99,10 +97,11 @@ const projects = await getCollection('projects')
         padding-bottom: 1.6em;
     }
     section.experiences .title {
-        padding-bottom: 0.8em;
+        padding-bottom: 0.4em;
+        border-bottom: 0.1em solid var(--fg);
     }
-    section.experiences .experience:not(:last-child) {
-        padding-bottom: 0.8em;
+    section.experiences .experience {
+        padding: 0.8em 0;
     }
     section.experiences .experience .heading {
         display: flex;
@@ -122,6 +121,7 @@ const projects = await getCollection('projects')
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-bottom: 0.8em;
+        padding-bottom: 0.4em;
+        border-bottom: 0.1em solid var(--fg);
     }
 </style>
