@@ -6,10 +6,15 @@ const { email, socials } = data
 
 <header>
     <nav>
-        <a href="/" class="brand text-xl text-display text-bold effect-shine"
-            >Akbar Sani H.</a
-        >
-        <ul class="nav-links">
+        <div class="nav-control">
+            <a
+                href="/"
+                class="brand text-xl text-display text-bold effect-shine"
+                >Akbar Sani H.</a
+            >
+            <button id="nav-control-button" data-open="close">Menu</button>
+        </div>
+        <ul class="nav-links hidden" id="nav-links">
             <li>
                 <a href="/about" class="effect-shine">About,</a>
             </li>
@@ -21,7 +26,7 @@ const { email, socials } = data
             </li>
         </ul>
     </nav>
-    <ul class="socials">
+    <ul class="socials hidden" id="socials">
         <li>
             <button id="email" data-email={email} class="effect-underline"
                 >Email,</button
@@ -48,18 +53,54 @@ const { email, socials } = data
     </ul>
 </header>
 
-<script>
-    interface EmailActionElement extends HTMLButtonElement {
-        dataset: {
-            email: string
-        }
+<style>
+    header {
+        padding: 0.8em 0;
     }
 
-    const email = document.getElementById('email') as EmailActionElement
+    .nav-links.hidden,
+    .socials.hidden {
+        display: none;
+    }
+
+    .nav-control {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    @media screen and (min-width: 1024px) {
+        header {
+            padding: 0;
+        }
+        .nav-control > button {
+            display: none;
+        }
+        .nav-links.hidden,
+        .socials.hidden {
+            display: flex;
+        }
+    }
+</style>
+
+<script>
+    const email = document.getElementById('email')
+    const navLinks = document.getElementById('nav-links')
+    const socials = document.getElementById('socials')
+    const navControlBtn = document.getElementById('nav-control-button')
+
+    navControlBtn?.addEventListener('click', function (e) {
+        const isOpen = this.dataset.open == 'open'
+
+        navLinks?.classList.toggle('hidden', isOpen)
+        socials?.classList.toggle('hidden', isOpen)
+
+        this.setAttribute('data-open', isOpen ? 'close' : 'open')
+        this.innerText = this.dataset.open == 'open' ? 'Close' : 'Menu'
+    })
 
     let emailTimeout: NodeJS.Timeout | null = null
-
-    email.addEventListener('click', function (event) {
+    email?.addEventListener('click', function (event) {
         event.preventDefault()
         const email = this.dataset.email as string
 
