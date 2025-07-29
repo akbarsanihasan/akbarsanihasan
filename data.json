@@ -26,7 +26,10 @@
             "gamer_tag": "Swollen Badger",
             "email": "akbarsanihasan@gmail.com",
             "socials": [
-                { "name": "Github.", "url": "https://github.com/akbarsani" }
+                {
+                    "name": "Github.",
+                    "url": "https://github.com/akbarsanihasan"
+                }
             ]
         }
     ]
