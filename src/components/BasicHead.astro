@@ -3,7 +3,7 @@ interface Props {
     author?: string
     description?: string
     keywords?: string[]
-    title: string
+    title?: string
 }
 
 const {
@@ -15,7 +15,7 @@ const {
 ---
 
 <head>
-    <title>{title}</title>
+    <title>{title ? `${title} - ${author}` : author}</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content={author} />

@@ -8,7 +8,13 @@ const { id, data } = Astro.props
             {data.name}
         </span>
         <ul class="category content text-italic">
-            {data.category.map((cat: string) => <li>{cat}</li>)}
+            {
+                data.category.map((cat: string, id: number) => (
+                    <li>
+                        {cat + `${id == data.category.length - 1 ? '.' : ','}`}
+                    </li>
+                ))
+            }
         </ul>
     </div>
     <p class="description">{data.description}</p>
@@ -40,7 +46,7 @@ const { id, data } = Astro.props
 
 <style>
     .project {
-        padding: 0.6em 0;
+        padding: 0.8em 0;
     }
     .project .heading {
         display: flex;
@@ -51,10 +57,11 @@ const { id, data } = Astro.props
     }
     .project .heading .category {
         display: flex;
+        flex-wrap: wrap;
         list-style: none;
     }
     .project .heading .category li:not(:last-child) {
-        padding-right: 0.6em;
+        padding-right: 0.3em;
     }
     .project .description {
         padding-bottom: 0.6em;

@@ -14,7 +14,6 @@ const projects = await getCollection('projects')
         <BasicHead
             keywords={['Akbar', 'Sani', 'Hasan']}
             description="A villager equipped with programming skills always trying to prioritize performance, simplicity, freedom & collaboration."
-            title="Akbar Sani Hasan"
         />
     </head>
     <body>
@@ -25,41 +24,25 @@ const projects = await getCollection('projects')
                     prioritize performance, simplicity, <span class="text-bold">
                         freedom
                     </span> & <span class="text-bold">collaboration</span>.
-                    <br />
-                    and also i use <span
-                        class="text-lg text-display text-italic">arch</span
-                    > and
-                    <span class="text-lg text-display text-italic">neovim</span>
-                    btw.
                 </p>
             </section>
             <section class="experiences">
-                <h5 class="title text-bold">Experiences</h5>
+                <h5 class="title text-bold text-display">Experiences</h5>
                 {
                     experiences.map(({ data }) => (
                         <div class="experience">
-                            <div class="heading">
-                                <span class="content instance">
-                                    <a
-                                        href={data.website}
-                                        target="_blank"
-                                        class="effect-underline text-bold"
-                                    >
-                                        {data.instance}
-                                    </a>
-                                </span>
-                                <div class="info">
-                                    <span class="content text-italic">
-                                        {data.type}
-                                    </span>
-                                    <span class="content duration text-italic">
+                            <div class="info">
+                                <div class="duration content">
+                                    <span class="duration text-italic">
                                         {new Date(
                                             data.start,
                                         ).toLocaleDateString(undefined, {
                                             month: 'long',
                                             year: 'numeric',
-                                        })}{' '}
-                                        -{' '}
+                                        })}
+                                    </span>
+                                    <span> - </span>
+                                    <span class="duration text-italic">
                                         {data.end
                                             ? new Date(
                                                   data.end,
@@ -70,6 +53,20 @@ const projects = await getCollection('projects')
                                             : 'Present'}
                                     </span>
                                 </div>
+                                <span class="content text-italic">
+                                    {data.type}
+                                </span>
+                            </div>
+                            <div class="instance">
+                                <span class="content text-bold">
+                                    <a
+                                        href={data.website}
+                                        target="_blank"
+                                        class="effect-underline"
+                                    >
+                                        {data.instance}
+                                    </a>
+                                </span>
                             </div>
                             <p class="description">{data.description}</p>
                         </div>
@@ -78,8 +75,8 @@ const projects = await getCollection('projects')
             </section>
             <section class="projects">
                 <div class="title">
-                    <h5 class="text-bold">Projects</h5>
-                    <a href="projects" class="text-bold effect-shine"> More </a>
+                    <h5 class="text-bold text-display">Projects</h5>
+                    <a href="projects" class="text-bold effect-shine">More</a>
                 </div>
                 {
                     projects
@@ -87,13 +84,20 @@ const projects = await getCollection('projects')
                         .map(({ id, data }) => <Project data={data} id={id} />)
                 }
             </section>
+            <section class="quote">
+                <div class="quote-block">
+                    <h6 class="text-display text-italic text-semibold">
+                        i use arch and neovim btw.
+                    </h6>
+                </div>
+            </section>
         </MainLayout>
     </body>
 </html>
 
 <style>
     section {
-        padding-bottom: 1.6em;
+        padding-bottom: 1em;
     }
     section.experiences .title {
         padding-bottom: 0.4em;
@@ -102,16 +106,15 @@ const projects = await getCollection('projects')
     section.experiences .experience {
         padding: 0.8em 0;
     }
-    section.experiences .experience .heading {
+    section.experiences .experience .info {
         display: flex;
         flex-direction: column;
     }
-    section.experiences .experience .heading .content {
+    section.experiences .experience .info .content {
         padding-bottom: 0.6em;
     }
-    section.experiences .experience .heading .info {
-        display: flex;
-        justify-content: space-between;
+    section.experiences .experience .instance {
+        padding-bottom: 0.6em;
     }
     section.experiences .experience .description {
         text-align: justify;
@@ -122,5 +125,23 @@ const projects = await getCollection('projects')
         align-items: center;
         padding-bottom: 0.4em;
         border-bottom: 0.1em solid var(--fg);
+    }
+    section.quote {
+        flex: 1;
+        display: flex;
+        align-items: end;
+        padding: 0;
+    }
+    section.quote .quote-block {
+        width: 100%;
+        padding-top: 0.3em;
+        border-top: 0.1em solid var(--fg);
+    }
+    @media screen and (min-width: 1024px) {
+        section.experiences .experience .info {
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
     }
 </style>

@@ -13,15 +13,13 @@ const [{ data }] = await getCollection('personal')
     <BasicHead
         author="Akbar Sani Hasan"
         keywords={['Akbar', 'Sani', 'Hasan']}
-        description="Software engineer focusing on performance, simplicity, freedom and colaboration"
-        title="About - Akbar Sani Hasan"
+        description="A villager equipped with programming skills always trying to prioritize performance, simplicity, freedom & collaboration."
+        title="About"
     />
     <body>
         <MainLayout>
             <section class="profile">
-                <h5 class="heading text-bold text-display">
-                    * General Profile
-                </h5>
+                <h4 class="heading text-display">* General Profile</h4>
                 <ul>
                     <li>
                         <div class="profile-list">
@@ -93,12 +91,12 @@ const [{ data }] = await getCollection('personal')
                     </li>
                 </ul>
             </section>
-            <section class="personal">
-                <h5 class="heading text-bold text-display">* Overview</h5>
+            <section class="overview">
+                <h4 class="heading text-display">* Overview</h4>
                 <p>
-                    I am villager equipped with programming skills that always
+                    I am a villager equipped with programming skills always
                     trying to prioritize performance, simplicity, and
-                    colalboration freedom. Prioritizing performance is not
+                    collaboration & freedom. Prioritizing performance is not
                     always easy and the fun part about programming but i believe
                     it's necessary and it will mold someone into better
                     programmer. Unecessary complexity are the roots of
@@ -106,18 +104,19 @@ const [{ data }] = await getCollection('personal')
                     i believe it's the way for developing software faster and
                     more predictable.
                 </p>
-                <h5 class="heading text-bold text-display">* Personal life</h5>
-                <h6>Background</h6>
+            </section>
+            <section class="personal">
+                <h4 class="heading text-display">* Personal life</h4>
+                <h5>Background</h5>
                 <p>
                     I grew up in a village that aren't so rural because Pizza
                     Hut and KFC are probably 5 minute away on motorcycle. We
                     don't own computer until my second sister entered highscool,
-                    we don't have wifi after i graduate my Vocational School. If
-                    i could describe my family economic state is that we are at
-                    the very bottom of the middle class, we could only afford
-                    entry level tertiary needs.
+                    we don't have wifi after i graduate my Vocational School.
+                    That means jumping career in tech are a bit challenging, but
+                    that's the fun part.
                 </p>
-                <h6>Educations</h6>
+                <h5>Educations</h5>
                 <p>
                     I attend 4year Vocational School studying <i>Programming</i
                     >, <i>Computer Architecture</i>, <i>System as a Service</i>, <i
@@ -129,8 +128,8 @@ const [{ data }] = await getCollection('personal')
                     there are many material i can worked with out there on the
                     internet than in school.
                 </p>
-                <h6>Hobbies & Interests</h6>
-                <span class="text-bold">** Movie & TV Show</span>
+                <h5>Hobby & Interest</h5>
+                <h6>** Movie & TV Show</h6>
                 <p>
                     I like watching movies and tv just like any normal human
                     being. Some of my favourite movies are the <span
@@ -150,7 +149,7 @@ const [{ data }] = await getCollection('personal')
                         ></span
                     >
                 </p>
-                <span class="text-bold">** Sports</span>
+                <h6>** Sports</h6>
                 <p>
                     I am not a sports guy and i am not athletic, but lately i
                     have been interested in <i>Running</i> and <i
@@ -166,7 +165,7 @@ const [{ data }] = await getCollection('personal')
                     >, a fallen legend teams slowly climbing to regain their
                     dominance in the sports is quite satisfying to cheer.
                 </p>
-                <span class="text-bold">** Gaming</span>
+                <h6>** Gaming</h6>
                 <p>
                     I am currently on hiatus from video games but i have played
                     several games in the past such <i>Far cry</i>, <i
@@ -174,13 +173,13 @@ const [{ data }] = await getCollection('personal')
                     >, and <i>Stardew valley</i> and some online mobile games but
                     i have fully given up on them long ago.
                 </p>
-                <span class="text-bold">** More to follow</span>
+                <h6>** More to follow</h6>
                 <p>I have been interested in reading some books lately.</p>
             </section>
             <div class="proverb">
-                <span class="text-display text-italic text-semibold"
-                    >"Tak kenal maka tak sayang"</span
-                >
+                <h6 class="text-display text-italic text-semibold">
+                    "Tak kenal maka tak sayang"
+                </h6>
             </div>
         </MainLayout>
     </body>
@@ -193,19 +192,19 @@ const [{ data }] = await getCollection('personal')
     h4,
     h5,
     h6 {
-        padding-bottom: 0.6em;
+        padding-bottom: 0.3em;
     }
     p {
         padding-bottom: 0.6em;
     }
-    section:not(:last-child) {
-        padding-bottom: 0.4em;
-    }
-    section h5.heading {
+    section h4.heading {
         padding: 0;
         padding-bottom: 0.4em;
-        border-bottom: 0.08em solid var(--fg);
         margin-bottom: 0.8em;
+        border-bottom: 0.08em solid var(--fg);
+    }
+    section:not(:last-child) {
+        padding-bottom: 0.4em;
     }
     section.profile ul {
         margin: 0;
@@ -226,7 +225,8 @@ const [{ data }] = await getCollection('personal')
         flex: 1;
         text-align: right;
     }
-    .proverb {
+    .proverb h6 {
+        padding: 0;
         padding-top: 0.6em;
         border-top: 0.1em solid var(--fg);
     }
