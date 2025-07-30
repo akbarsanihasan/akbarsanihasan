@@ -13,7 +13,7 @@
         "@fontsource-variable/lora": "^5.2.6",
         "@fontsource-variable/playfair-display": "^5.2.6",
         "@fontsource/noto-color-emoji": "^5.2.8",
-        "astro": "^5.10.2",
+        "astro": "^5.12.5",
         "sanitize.css": "^13.0.0"
     },
     "devDependencies": {
