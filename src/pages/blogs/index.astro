@@ -1,29 +1,30 @@
 ---
 import '@styles/global.css'
 import BasicHead from '@components/BasicHead.astro'
+import MainLayout from '@layouts/MainLayout.astro'
+
+import { getCollection } from 'astro:content'
+import Post from '@components/Blogs/Post.astro'
+
+const blogPosts = await getCollection('blogs')
 ---
 
 <!doctype html>
 <html lang="en">
     <BasicHead title="Blogs" />
     <body>
-        <div>
-            <h3 class="text-display">Coming soon !</h3>
-            <a href="/" class="effect-underline">Go Home</a>
-        </div>
+        <MainLayout>
+            {
+                blogPosts.map(({ id, data }) => (
+                    <Post
+                        title={data.title}
+                        published_date={new Date(data.published_date)}
+                        excerpt={data.excerpt}
+                        url={`/blogs/${id}`}
+                    />
+                ))
+            }
+        </MainLayout>
     </body>
 </html>
-<style>
-    div {
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-
-    h3 {
-        padding-bottom: 0.6em;
-    }
-</style>
+<style></style>

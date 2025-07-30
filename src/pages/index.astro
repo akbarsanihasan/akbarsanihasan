@@ -32,7 +32,8 @@ const projects = await getCollection('projects')
                     experiences.map(({ data }) => (
                         <div class="experience">
                             <div class="info">
-                                <div class="duration content">
+                                <span class="content">{data.type}</span>
+                                <div class="content">
                                     <span class="duration text-italic">
                                         {new Date(
                                             data.start,
@@ -53,9 +54,6 @@ const projects = await getCollection('projects')
                                             : 'Present'}
                                     </span>
                                 </div>
-                                <span class="content text-italic">
-                                    {data.type}
-                                </span>
                             </div>
                             <div class="instance">
                                 <span class="content text-bold">
@@ -104,17 +102,25 @@ const projects = await getCollection('projects')
         border-bottom: 0.1em solid var(--fg);
     }
     section.experiences .experience {
-        padding: 0.6em 0;
-    }
-    section.experiences .experience .info {
         display: flex;
         flex-direction: column;
+        padding: 0.8em 0;
     }
     section.experiences .experience .instance,
     section.experiences .experience .info .content {
         padding-bottom: 0.3em;
     }
+    section.experiences .experience .info {
+        order: 2;
+        display: flex;
+        flex-direction: column;
+    }
+    section.experiences .experience .instance {
+        order: 1;
+        font-style: normal;
+    }
     section.experiences .experience .description {
+        order: 3;
         text-align: justify;
     }
     section.projects .title {
@@ -137,9 +143,17 @@ const projects = await getCollection('projects')
     }
     @media screen and (min-width: 1024px) {
         section.experiences .experience .info {
+            order: 0;
             flex-direction: row;
             justify-content: space-between;
             flex-wrap: wrap;
+        }
+        section.experiences .experience .instance {
+            order: 0;
+        }
+        section.experiences .experience .description {
+            order: 0;
+            text-align: left;
         }
     }
 </style>

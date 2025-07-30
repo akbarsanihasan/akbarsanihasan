@@ -5,7 +5,7 @@ url:
 category: [Web, Application]
 description:
     'A platform to share and evaluate instances of money politics during
-    election season in Indonesia.'
+    election in Indonesia.'
 ---
 
 # Politikuang

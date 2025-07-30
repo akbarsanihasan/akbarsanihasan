@@ -65,6 +65,7 @@ const { data } = Astro.props
     }
     .project .description {
         padding-bottom: 0.6em;
+        text-align: justify;
     }
     .project .actions {
         display: flex;
@@ -77,6 +78,9 @@ const { data } = Astro.props
         .project .heading {
             flex-direction: row;
             justify-content: space-between;
+        }
+        .project .description {
+            text-align: left;
         }
     }
 </style>
