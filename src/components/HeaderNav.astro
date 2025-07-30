@@ -85,7 +85,7 @@ const { email, socials } = data
     const socials = document.getElementById('socials')
     const navControlBtn = document.getElementById('nav-control-button')
 
-    navControlBtn?.addEventListener('click', function (e) {
+    navControlBtn?.addEventListener('click', function () {
         const isOpen = this.dataset.open == 'open'
 
         navLinks?.classList.toggle('hidden', isOpen)
