@@ -8,6 +8,15 @@
             "start": "2021-03-01",
             "end": "2022-03-01",
             "description": "Developing and maintaining Enterprise Resource Planning (ERP) using Fullstack PHP (Codeigniter3, JQuery, PostgreSQL)"
+        },
+        {
+            "id": "skyshi",
+            "instance": "CV. Karya Hidup Sentosa",
+            "type": "Internship",
+            "website": "https://quick.co.id",
+            "start": "2021-03-01",
+            "end": "2022-03-01",
+            "description": "Developing and maintaining Enterprise Resource Planning (ERP) using Fullstack PHP (Codeigniter3, JQuery, PostgreSQL)"
         }
     ],
     "personal": [
