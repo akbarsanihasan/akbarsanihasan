@@ -8,8 +8,4 @@ export default defineConfig({
         host: true,
         allowedHosts: true,
     },
-    i18n: {
-        locales: ['id', 'en'],
-        defaultLocale: 'en',
-    },
 })

@@ -9,7 +9,7 @@ const projects = await getCollection('projects')
 ---
 
 <!doctype html>
-<html lang="en">
+<html>
     <head>
         <BasicHead
             keywords={['Akbar', 'Sani', 'Hasan']}
@@ -36,7 +36,7 @@ const projects = await getCollection('projects')
                                     <span class="duration text-italic">
                                         {new Date(
                                             data.start,
-                                        ).toLocaleDateString(undefined, {
+                                        ).toLocaleDateString('en', {
                                             month: 'long',
                                             year: 'numeric',
                                         })}
@@ -46,7 +46,7 @@ const projects = await getCollection('projects')
                                         {data.end
                                             ? new Date(
                                                   data.end,
-                                              ).toLocaleDateString(undefined, {
+                                              ).toLocaleDateString('en', {
                                                   month: 'long',
                                                   year: 'numeric',
                                               })

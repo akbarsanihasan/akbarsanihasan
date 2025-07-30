@@ -5,11 +5,21 @@ import { getCollection } from 'astro:content'
 
 const kiloToPound = (kilo: number) => (kilo * 2.205).toFixed()
 const centiToFeet = (centi: number) => (centi * 0.03281).toFixed(1)
+const getAge = (birthdayDate: string): string => {
+    const now = new Date()
+    const birthday = new Date(birthdayDate)
+
+    const year = now.getFullYear() - birthday.getFullYear()
+    const month = 12 - birthday.getMonth() + now.getMonth()
+
+    return `${month < 12 ? year - 1 : year} years ${month} month`
+}
+
 const [{ data }] = await getCollection('personal')
 ---
 
 <!doctype html>
-<html lang="en">
+<html>
     <BasicHead
         author="Akbar Sani Hasan"
         keywords={['Akbar', 'Sani', 'Hasan']}
@@ -31,6 +41,29 @@ const [{ data }] = await getCollection('personal')
                         <div class="profile-list">
                             <span class="key text-bold">Gender</span>
                             <span class="value">{data.gender}</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="profile-list">
+                            <span class="key text-bold">Birthday</span>
+                            <span class="value"
+                                >{
+                                    new Date(data.birthday).toLocaleDateString(
+                                        'en',
+                                        {
+                                            year: 'numeric',
+                                            month: 'long',
+                                            day: '2-digit',
+                                        },
+                                    )
+                                }</span
+                            >
+                        </div>
+                    </li>
+                    <li>
+                        <div class="profile-list">
+                            <span class="key text-bold">Age</span>
+                            <span class="value">{getAge(data.birthday)}</span>
                         </div>
                     </li>
                     <li>
