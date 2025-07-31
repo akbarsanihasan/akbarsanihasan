@@ -19,7 +19,7 @@ const projects = await getCollection('projects')
     <body>
         <MainLayout>
             <section class="presentable">
-                <p class="bio text-lg">
+                <p class="bio text-lg text-display">
                     A villager equipped with programming skills always trying to
                     prioritize performance, simplicity, <em class="text-bold">
                         freedom
@@ -27,7 +27,7 @@ const projects = await getCollection('projects')
                 </p>
             </section>
             <section class="experiences">
-                <h4 class="title text-display">Experiences</h4>
+                <h4 class="title text-extrabold text-display">Experiences</h4>
                 {
                     experiences.map(({ data }) => (
                         <div class="experience">
@@ -56,7 +56,7 @@ const projects = await getCollection('projects')
                                 </div>
                             </div>
                             <div class="instance">
-                                <h6 class="content text-semibold">
+                                <h6 class="content">
                                     <a
                                         href={data.website}
                                         target="_blank"
@@ -72,7 +72,7 @@ const projects = await getCollection('projects')
                 }
             </section>
             <section class="projects">
-                <h4 class="title text-display">Projects</h4>
+                <h4 class="title text-extrabold text-display">Projects</h4>
                 {
                     projects
                         .slice(0, 2)
@@ -94,10 +94,13 @@ const projects = await getCollection('projects')
     section {
         padding-bottom: 1em;
     }
-    section.experiences .title {
+    section.presentable > p {
+        padding-bottom: 0.6em;
         margin-bottom: 0.3em;
-        padding-bottom: 0.2em;
         border-bottom: 0.1em solid var(--fg);
+    }
+    section.experiences .title {
+        padding-bottom: 0.3em;
     }
     section.experiences .experience {
         padding: 0.6em 0;
@@ -121,12 +124,7 @@ const projects = await getCollection('projects')
         order: 3;
     }
     section.projects .title {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 0.3em;
-        padding-bottom: 0.4em;
-        border-bottom: 0.1em solid var(--fg);
+        padding-bottom: 0.3em;
     }
     .quote {
         flex: 1;
