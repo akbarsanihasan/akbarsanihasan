@@ -72,10 +72,7 @@ const projects = await getCollection('projects')
                 }
             </section>
             <section class="projects">
-                <div class="title">
-                    <h4 class="text-display">Projects</h4>
-                    <a href="projects" class="text-bold effect-shine">More</a>
-                </div>
+                <h4 class="title text-display">Projects</h4>
                 {
                     projects
                         .slice(0, 2)
@@ -98,8 +95,8 @@ const projects = await getCollection('projects')
         padding-bottom: 1em;
     }
     section.experiences .title {
-        padding-bottom: 0.4em;
         margin-bottom: 0.3em;
+        padding-bottom: 0.2em;
         border-bottom: 0.1em solid var(--fg);
     }
     section.experiences .experience {
@@ -127,8 +124,8 @@ const projects = await getCollection('projects')
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-bottom: 0.4em;
         margin-bottom: 0.3em;
+        padding-bottom: 0.4em;
         border-bottom: 0.1em solid var(--fg);
     }
     .quote {
