@@ -140,6 +140,9 @@ const projects = await getCollection('projects')
         border-top: 0.1em solid var(--fg);
     }
     @media screen and (min-width: 1024px) {
+        section.presentable .bio {
+            text-align: justify;
+        }
         section.experiences .experience .info {
             order: 0;
             flex-direction: row;
