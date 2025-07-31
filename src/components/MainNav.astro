@@ -19,10 +19,7 @@ const { email, socials } = data
                 <a href="/about" class="effect-shine">About,</a>
             </li>
             <li>
-                <a href="/projects" class="effect-shine">Projects,</a>
-            </li>
-            <li>
-                <a href="/blogs" class="effect-shine">Blogs.</a>
+                <a href="/projects" class="effect-shine">Projects.</a>
             </li>
         </ul>
     </nav>
@@ -54,27 +51,74 @@ const { email, socials } = data
 </header>
 
 <style>
-    .nav-links.hidden,
-    .socials.hidden {
+    header {
+        display: flex;
+        flex-direction: column;
+    }
+    header nav {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    header ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+    header ul.socials,
+    header nav ul.nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+    header ul.socials.hidden,
+    header nav ul.nav-links.hidden {
         display: none;
     }
-
-    .nav-control {
+    header ul.socials li,
+    header nav ul.nav-links li {
+        padding: 0.6em 0;
+    }
+    header ul.socials {
+        list-style: none;
+    }
+    header nav a.brand {
+        padding: 0.6em 0;
+        align-self: start;
+    }
+    header nav .nav-control {
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
-
     @media screen and (min-width: 1024px) {
         header {
             padding: 0;
         }
-        .nav-control > button {
+        header {
+            justify-content: space-between;
+        }
+        header ul.socials,
+        header nav ul.nav-links {
+            flex-direction: column;
+            align-items: end;
+        }
+        header ul.socials li,
+        header nav ul.nav-links li {
+            padding: 0;
+            padding-top: 0.6em;
+        }
+        header ul.socials.hidden,
+        header nav ul.nav-links.hidden {
+            display: flex;
+        }
+        header nav .nav-control > button {
             display: none;
         }
-        .nav-links.hidden,
-        .socials.hidden {
-            display: flex;
+        header nav a.brand {
+            padding: 0;
+            padding-bottom: 0.6em;
         }
     }
 </style>
