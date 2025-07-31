@@ -4,9 +4,9 @@ const { data } = Astro.props
 
 <div class="project">
     <div class="heading">
-        <span class="name content text-bold">
+        <h6 class="name content text-semibold">
             {data.name}
-        </span>
+        </h6>
         <ul class="category content text-italic">
             {
                 data.category.map((cat: string, id: number) => (
@@ -53,7 +53,7 @@ const { data } = Astro.props
         flex-direction: column;
     }
     .project .heading .content {
-        padding-bottom: 0.3em;
+        padding-bottom: 0.4em;
     }
     .project .heading .category {
         display: flex;
@@ -61,14 +61,14 @@ const { data } = Astro.props
         list-style: none;
     }
     .project .heading .category li:not(:last-child) {
-        padding-right: 0.3em;
+        padding-right: 0.4em;
     }
     .project .description {
         padding-bottom: 0.6em;
-        text-align: justify;
     }
     .project .actions {
         display: flex;
+        align-items: center;
         flex-wrap: wrap;
     }
     .project .actions a:not(:last-child) {
@@ -77,10 +77,11 @@ const { data } = Astro.props
     @media screen and (min-width: 1024px) {
         .project .heading {
             flex-direction: row;
+            align-items: center;
             justify-content: space-between;
         }
         .project .description {
-            text-align: left;
+            text-align: justify;
         }
     }
 </style>

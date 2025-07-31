@@ -3,7 +3,7 @@ import '@styles/global.css'
 import HeaderNav from '@components/HeaderNav.astro'
 ---
 
-<div class="main-layout container">
+<div class="main-layout container-md">
     <HeaderNav />
     <main>
         <slot />
@@ -31,7 +31,7 @@ import HeaderNav from '@components/HeaderNav.astro'
             padding: 3em 0;
         }
         main {
-            padding: 0 3em;
+            padding: 0 min(6vw, 6em);
             scrollbar-width: thin;
         }
     }

@@ -27,7 +27,7 @@ const projects = await getCollection('projects')
                 </p>
             </section>
             <section class="experiences">
-                <h5 class="title text-bold text-display">Experiences</h5>
+                <h4 class="title text-display">Experiences</h4>
                 {
                     experiences.map(({ data }) => (
                         <div class="experience">
@@ -56,7 +56,7 @@ const projects = await getCollection('projects')
                                 </div>
                             </div>
                             <div class="instance">
-                                <span class="content text-bold">
+                                <h6 class="content text-semibold">
                                     <a
                                         href={data.website}
                                         target="_blank"
@@ -64,7 +64,7 @@ const projects = await getCollection('projects')
                                     >
                                         {data.instance}
                                     </a>
-                                </span>
+                                </h6>
                             </div>
                             <p class="description">{data.description}</p>
                         </div>
@@ -73,7 +73,7 @@ const projects = await getCollection('projects')
             </section>
             <section class="projects">
                 <div class="title">
-                    <h5 class="text-bold text-display">Projects</h5>
+                    <h4 class="text-display">Projects</h4>
                     <a href="projects" class="text-bold effect-shine">More</a>
                 </div>
                 {
@@ -99,16 +99,17 @@ const projects = await getCollection('projects')
     }
     section.experiences .title {
         padding-bottom: 0.4em;
+        margin-bottom: 0.3em;
         border-bottom: 0.1em solid var(--fg);
     }
     section.experiences .experience {
+        padding: 0.6em 0;
         display: flex;
         flex-direction: column;
-        padding: 0.8em 0;
     }
     section.experiences .experience .instance,
     section.experiences .experience .info .content {
-        padding-bottom: 0.3em;
+        padding-bottom: 0.4em;
     }
     section.experiences .experience .info {
         order: 2;
@@ -121,13 +122,13 @@ const projects = await getCollection('projects')
     }
     section.experiences .experience .description {
         order: 3;
-        text-align: justify;
     }
     section.projects .title {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding-bottom: 0.4em;
+        margin-bottom: 0.3em;
         border-bottom: 0.1em solid var(--fg);
     }
     .quote {
@@ -145,6 +146,7 @@ const projects = await getCollection('projects')
         section.experiences .experience .info {
             order: 0;
             flex-direction: row;
+            align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
         }
@@ -153,7 +155,7 @@ const projects = await getCollection('projects')
         }
         section.experiences .experience .description {
             order: 0;
-            text-align: left;
+            text-align: justify;
         }
     }
 </style>
