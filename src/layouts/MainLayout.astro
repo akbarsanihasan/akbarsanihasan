@@ -3,7 +3,7 @@ import '@styles/global.css'
 import MainNav from '@components/MainNav.astro'
 ---
 
-<div class="main-layout container-md">
+<div class="main-layout container">
     <MainNav />
     <main>
         <slot />
@@ -30,7 +30,7 @@ import MainNav from '@components/MainNav.astro'
             padding: 3em 0;
         }
         main {
-            padding: 0 min(10vw, 6em);
+            padding: 0 min(6vw, 4em);
             scrollbar-width: thin;
         }
     }
