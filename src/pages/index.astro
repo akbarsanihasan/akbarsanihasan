@@ -2,14 +2,15 @@
 import { getCollection } from 'astro:content'
 import BasicHead from '@components/BasicHead.astro'
 import MainLayout from '@layouts/MainLayout.astro'
-import Project from '@components/Projects/Project.astro'
+import ProjectCard from '@components/Projects/ProjectCard.astro'
+import ExperienceCard from '@components/ExperienceCard.astro'
 
 const experiences = await getCollection('experiences')
 const projects = await getCollection('projects')
 ---
 
 <!doctype html>
-<html>
+<html lang="en">
     <head>
         <BasicHead
             keywords={['Akbar', 'Sani', 'Hasan']}
@@ -29,54 +30,43 @@ const projects = await getCollection('projects')
             <section class="experiences">
                 <h4 class="title text-extrabold text-display">Experiences</h4>
                 {
-                    experiences.map(({ data }) => (
-                        <div class="experience">
-                            <div class="info">
-                                <span class="content">{data.type}</span>
-                                <div class="content">
-                                    <span class="duration text-italic">
-                                        {new Date(
-                                            data.start,
-                                        ).toLocaleDateString('en', {
-                                            month: 'long',
-                                            year: 'numeric',
-                                        })}
-                                    </span>
-                                    <span> - </span>
-                                    <span class="duration text-italic">
-                                        {data.end
-                                            ? new Date(
-                                                  data.end,
-                                              ).toLocaleDateString('en', {
-                                                  month: 'long',
-                                                  year: 'numeric',
-                                              })
-                                            : 'Present'}
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="instance">
-                                <h6 class="content">
-                                    <a
-                                        href={data.website}
-                                        target="_blank"
-                                        class="effect-underline"
-                                    >
-                                        {data.instance}
-                                    </a>
-                                </h6>
-                            </div>
-                            <p class="description">{data.description}</p>
-                        </div>
-                    ))
+                    experiences.map(({ data }) => {
+                        const {
+                            type,
+                            start,
+                            end,
+                            instance,
+                            website,
+                            description,
+                        } = data
+                        return (
+                            <ExperienceCard
+                                type={type}
+                                description={description}
+                                start={start}
+                                end={end}
+                                instance={instance}
+                                website={website}
+                            />
+                        )
+                    })
                 }
             </section>
             <section class="projects">
                 <h4 class="title text-extrabold text-display">Projects</h4>
                 {
-                    projects
-                        .slice(0, 2)
-                        .map(({ id, data }) => <Project data={data} id={id} />)
+                    projects.slice(0, 2).map(({ id, data }) => {
+                        const { name, description, url, category } = data
+                        return (
+                            <ProjectCard
+                                id={id}
+                                name={name}
+                                description={description}
+                                url={url}
+                                category={category}
+                            />
+                        )
+                    })
                 }
             </section>
             <div class="quote">
@@ -99,26 +89,9 @@ const projects = await getCollection('projects')
         margin-bottom: 0.3em;
         border-bottom: 0.1em solid var(--fg);
     }
-    section.experiences .experience {
-        padding: 0.6em 0;
-        display: flex;
-        flex-direction: column;
-    }
-    section.experiences .experience .instance,
-    section.experiences .experience .info .content {
-        padding-bottom: 0.4em;
-    }
-    section.experiences .experience .info {
-        order: 2;
-        display: flex;
-        flex-direction: column;
-    }
-    section.experiences .experience .instance {
-        order: 1;
-        font-style: normal;
-    }
-    section.experiences .experience .description {
-        order: 3;
+    section.projects .title,
+    section.experiences .title {
+        padding-bottom: 0.6em;
     }
     .quote {
         flex: 1;
@@ -133,20 +106,6 @@ const projects = await getCollection('projects')
     }
     @media screen and (min-width: 1024px) {
         section.presentable .bio {
-            text-align: justify;
-        }
-        section.experiences .experience .info {
-            order: 0;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-        section.experiences .experience .instance {
-            order: 0;
-        }
-        section.experiences .experience .description {
-            order: 0;
             text-align: justify;
         }
     }

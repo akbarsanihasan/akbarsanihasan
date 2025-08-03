@@ -9,8 +9,7 @@
     --font-size-min: 18px;
     --font-size-max: 20px;
     --font-size-fluid: 3vw;
-    --scale-minor-third: 1.067;
-    --scale-major-third: 1.125;
+    --scale: 1.125;
 }
 
 body {
@@ -76,67 +75,67 @@ p {
 }
 
 .text-sm {
-    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale-minor-third), -1)),
-            calc(var(--font-size-fluid) * pow(var(--scale-major-third), -1)),
-            calc(var(--font-size-max) * pow(var(--scale-major-third), -1)));
+    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale), -1)),
+            calc(var(--font-size-fluid) * pow(var(--scale), -1)),
+            calc(var(--font-size-max) * pow(var(--scale), -1)));
 }
 
 h6,
 .text-lg {
-    font-size: clamp(calc(var(--font-size-min) * var(--scale-minor-third)),
-            calc(var(--font-size-fluid) * var(--scale-major-third)),
-            calc(var(--font-size-max) * var(--scale-major-third)));
+    font-size: clamp(calc(var(--font-size-min) * var(--scale)),
+            calc(var(--font-size-fluid) * var(--scale)),
+            calc(var(--font-size-max) * var(--scale)));
 }
 
 h5,
 .text-xl {
-    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale-minor-third), 2)),
-            calc(var(--font-size-fluid) * pow(var(--scale-major-third), 2)),
-            calc(var(--font-size-max) * pow(var(--scale-major-third), 2)));
+    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale), 2)),
+            calc(var(--font-size-fluid) * pow(var(--scale), 2)),
+            calc(var(--font-size-max) * pow(var(--scale), 2)));
 }
 
 h4,
 .text-2xl {
-    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale-minor-third), 3)),
-            calc(var(--font-size-fluid) * pow(var(--scale-major-third), 3)),
-            calc(var(--font-size-max) * pow(var(--scale-major-third), 3)));
+    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale), 3)),
+            calc(var(--font-size-fluid) * pow(var(--scale), 3)),
+            calc(var(--font-size-max) * pow(var(--scale), 3)));
 }
 
 h3,
 .text-3xl {
-    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale-minor-third), 4)),
-            calc(var(--font-size-fluid) * pow(var(--scale-major-third), 4)),
-            calc(var(--font-size-max) * pow(var(--scale-major-third), 4)));
+    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale), 4)),
+            calc(var(--font-size-fluid) * pow(var(--scale), 4)),
+            calc(var(--font-size-max) * pow(var(--scale), 4)));
 }
 
 h2,
 .text-4xl {
-    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale-minor-third), 5)),
-            calc(var(--font-size-fluid) * pow(var(--scale-major-third), 5)),
-            calc(var(--font-size-max) * pow(var(--scale-major-third), 5)));
+    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale), 5)),
+            calc(var(--font-size-fluid) * pow(var(--scale), 5)),
+            calc(var(--font-size-max) * pow(var(--scale), 5)));
 }
 
 h1,
 .text-5xl {
-    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale-minor-third), 6)),
-            calc(var(--font-size-fluid) * pow(var(--scale-major-third), 6)),
-            calc(var(--font-size-max) * pow(var(--scale-major-third), 6)));
+    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale), 6)),
+            calc(var(--font-size-fluid) * pow(var(--scale), 6)),
+            calc(var(--font-size-max) * pow(var(--scale), 6)));
 }
 
 .text-6xl {
-    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale-minor-third), 7)),
-            calc(var(--font-size-fluid) * pow(var(--scale-major-third), 7)),
-            calc(var(--font-size-max) * pow(var(--scale-major-third), 7)));
+    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale), 7)),
+            calc(var(--font-size-fluid) * pow(var(--scale), 7)),
+            calc(var(--font-size-max) * pow(var(--scale), 7)));
 }
 
 .text-7xl {
-    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale-minor-third), 8)),
-            calc(var(--font-size-fluid) * pow(var(--scale-major-third), 8)),
-            calc(var(--font-size-max) * pow(var(--scale-major-third), 8)));
+    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale), 8)),
+            calc(var(--font-size-fluid) * pow(var(--scale), 8)),
+            calc(var(--font-size-max) * pow(var(--scale), 8)));
 }
 
 .text-8xl {
-    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale-minor-third), 9)),
-            calc(var(--font-size-fluid) * pow(var(--scale-major-third), 9)),
-            calc(var(--font-size-max) * pow(var(--scale-major-third), 9)));
+    font-size: clamp(calc(var(--font-size-min) * pow(var(--scale), 9)),
+            calc(var(--font-size-fluid) * pow(var(--scale), 9)),
+            calc(var(--font-size-max) * pow(var(--scale), 9)));
 }

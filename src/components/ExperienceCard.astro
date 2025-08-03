@@ -1,0 +1,77 @@
+---
+interface Props {
+    type: string
+    start: string
+    end?: string
+    instance: string
+    website: string
+    description: string
+}
+
+const { type, start, end, instance, website, description } = Astro.props
+---
+
+<div class="experience">
+    <div class="instance">
+        <span class="content">
+            <a
+                href={website}
+                target="_blank"
+                class="effect-underline text-lg text-semibold"
+            >
+                {instance}
+            </a>
+        </span>
+    </div>
+    <div class="info">
+        <span class="content text-italic">{type}</span>
+        <div class="content">
+            <span class="duration text-italic">
+                {
+                    new Date(start).toLocaleDateString('en', {
+                        month: 'long',
+                        year: 'numeric',
+                    })
+                }
+            </span>
+            <span> - </span>
+            <span class="duration text-italic">
+                {
+                    end
+                        ? new Date(end).toLocaleDateString('en', {
+                              month: 'long',
+                              year: 'numeric',
+                          })
+                        : 'Present'
+                }
+            </span>
+        </div>
+    </div>
+    <p class="description">{description}</p>
+</div>
+<style>
+    .experience {
+        padding-bottom: 1.2em;
+        display: flex;
+        flex-direction: column;
+    }
+    .experience .instance,
+    .experience .info .content {
+        padding-bottom: 0.4em;
+    }
+    .experience .info {
+        display: flex;
+        flex-direction: column;
+    }
+    @media screen and (min-width: 1024px) {
+        .experience .info {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .experience .description {
+            text-align: justify;
+        }
+    }
+</style>

@@ -1,28 +1,36 @@
 ---
-const { data } = Astro.props
+interface Props {
+    id: string
+    name: string
+    description: string
+    category: string[]
+    url: {
+        website?: string
+        repo?: string
+    }
+}
+const { name, category, url, description } = Astro.props
 ---
 
 <div class="project">
     <div class="heading">
-        <h6 class="name content">
-            {data.name}
-        </h6>
+        <span class="name content text-lg text-semibold">
+            {name}
+        </span>
         <ul class="category content text-italic">
             {
-                data.category.map((cat: string, id: number) => (
-                    <li>
-                        {cat + `${id == data.category.length - 1 ? '.' : ','}`}
-                    </li>
+                category.map((cat: string, id: number) => (
+                    <li>{cat + `${id == category.length - 1 ? '.' : ','}`}</li>
                 ))
             }
         </ul>
     </div>
-    <p class="description">{data.description}</p>
+    <p class="description">{description}</p>
     <div class="actions">
         {
-            data.url.website && (
+            url.website && (
                 <a
-                    href={data.url.repo}
+                    href={url.repo}
                     class="website effect-underline"
                     target="_blank"
                 >
@@ -31,9 +39,9 @@ const { data } = Astro.props
             )
         }
         {
-            data.url.repo && (
+            url.repo && (
                 <a
-                    href={data.url.repo}
+                    href={url.repo}
                     class="source-code effect-underline"
                     target="_blank"
                 >
@@ -46,10 +54,11 @@ const { data } = Astro.props
 
 <style>
     .project {
-        padding: 0.6em 0;
+        padding-bottom: 1.2em;
     }
     .project .heading {
         display: flex;
+        align-items: center;
         flex-direction: column;
     }
     .project .heading .content {
@@ -64,7 +73,7 @@ const { data } = Astro.props
         padding-right: 0.4em;
     }
     .project .description {
-        padding-bottom: 0.6em;
+        padding-bottom: 0.4em;
     }
     .project .actions {
         display: flex;
