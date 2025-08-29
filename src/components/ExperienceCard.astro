@@ -13,14 +13,8 @@ const { type, start, end, instance, website, description } = Astro.props
 
 <div class="experience">
     <div class="instance">
-        <span class="content">
-            <a
-                href={website}
-                target="_blank"
-                class="effect-underline text-lg text-semibold"
-            >
-                {instance}
-            </a>
+        <span class="content text-lg text-semibold">
+            {instance}
         </span>
     </div>
     <div class="info">
