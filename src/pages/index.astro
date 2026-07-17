@@ -27,7 +27,7 @@ const projects = await getCollection('projects')
                     </em> & <em class="text-bold">collaboration</em>.
                 </p>
             </section>
-            <section class="experiences">
+            <section class="experiences" hidden={experiences.length == 0}>
                 <h4 class="title text-extrabold text-display">Experiences</h4>
                 {
                     experiences.map(({ data }) => {
@@ -52,7 +52,7 @@ const projects = await getCollection('projects')
                     })
                 }
             </section>
-            <section class="projects">
+            <section class="projects" hidden={projects.length == 0}>
                 <h4 class="title text-extrabold text-display">Projects</h4>
                 {
                     projects.slice(0, 2).map(({ id, data }) => {
